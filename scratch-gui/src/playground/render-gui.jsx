@@ -28,6 +28,7 @@ const handleTelemetryModalOptOut = () => {
  * that instantiates the VM causes unsupported browsers to crash
  * {object} appTarget - the DOM element to render to
  */
+// Change
 export default appTarget => {
     GUI.setAppElement(appTarget);
 
