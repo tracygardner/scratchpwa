@@ -94,7 +94,11 @@ const base = {
     plugins: [
       new WorkboxWebpackPlugin.InjectManifest({
       swSrc: "./src/src-sw.js",
-      swDest: "sw.js"
+      swDest: "sw.js",
+      modifyURLPrefix: {
+  '/dist/': '/',
+  '': '/static',
+}
       })
     ]
 };
