@@ -79,11 +79,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_supported_browser__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../lib/supported-browser */ "./src/lib/supported-browser.js");
 /* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./index.css */ "./src/playground/index.css");
 /* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_index_css__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var workbox_window__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! workbox-window */ "./node_modules/workbox-window/build/workbox-window.prod.es5.mjs");
 // Polyfills
 
 
 
  // For Safari 9
+
 
 
 
@@ -118,7 +120,7 @@ if (Object(_lib_supported_browser__WEBPACK_IMPORTED_MODULE_9__["default"])()) {
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", function () {
-    var wb = new Workbox("/scratchpwa/sw.js");
+    var wb = new workbox_window__WEBPACK_IMPORTED_MODULE_11__["Workbox"]("/scratchpwa/sw.js");
     wb.register();
   });
 }
