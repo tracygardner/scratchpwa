@@ -1,6 +1,8 @@
+
 const defaultsDeep = require('lodash.defaultsdeep');
 var path = require('path');
 var webpack = require('webpack');
+const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 
 // Plugins
 var CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -89,7 +91,12 @@ const base = {
             })
         ]
     },
-    plugins: []
+    plugins: [
+      new WorkboxWebpackPlugin.InjectManifest({
+      swSrc: "./src/src-sw.js",
+      swDest: "sw.js"
+      })
+    ]
 };
 
 if (!process.env.CI) {
