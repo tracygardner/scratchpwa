@@ -116,6 +116,13 @@ if (Object(_lib_supported_browser__WEBPACK_IMPORTED_MODULE_9__["default"])()) {
   }), appTarget);
 }
 
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    var wb = new Workbox("/scratchpwa/sw.js");
+    wb.register();
+  });
+}
+
 /***/ }),
 
 /***/ "./src/playground/render-gui.jsx":

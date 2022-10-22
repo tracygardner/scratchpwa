@@ -33,3 +33,12 @@ if (supportedBrowser()) {
     // eslint-disable-next-line react/jsx-no-bind
     ReactDOM.render(<WrappedBrowserModalComponent onBack={handleBack} />, appTarget);
 }
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+      const wb = new Workbox("/scratchpwa/sw.js");
+    
+wb.register();
+  });
+
+}
