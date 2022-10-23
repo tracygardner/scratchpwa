@@ -112,7 +112,7 @@ define(['./workbox-b5366f8b'], (function (workbox) { 'use strict';
     "revision": "8291b7e72217c9c2f8ab55a92b2bbc72"
   }, {
     "url": "/scratchpwa/chunks/gui.js",
-    "revision": "e9e69573068167e99d80b1d69671127f"
+    "revision": "b0dbb9359233b3be37cf0a05e37af04f"
   }, {
     "url": "/scratchpwa/chunks/ja-steps.js",
     "revision": "7ea3b3572ce675711a2abf7e262a81e5"

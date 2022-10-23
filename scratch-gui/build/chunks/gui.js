@@ -118,6 +118,16 @@ if (Object(_lib_supported_browser__WEBPACK_IMPORTED_MODULE_9__["default"])()) {
   }), appTarget);
 }
 
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('/scratchpwa/sw.js').then(function (registration) {
+      console.log('SW registered: ', registration);
+    }).catch(function (registrationError) {
+      console.log('SW registration failed: ', registrationError);
+    });
+  });
+}
+
 /***/ }),
 
 /***/ "./src/playground/render-gui.jsx":
