@@ -145,7 +145,7 @@ define(['./workbox-b5366f8b'], (function (workbox) { 'use strict';
     "revision": "9a1b34c26f76fa70ab749076656c9454"
   }, {
     "url": "/scratchpwa/lib.min.js",
-    "revision": "ddb969b069cb68593aa89b8060ba289a"
+    "revision": "249b8d37cbaeabd495df27edc0859563"
   }, {
     "url": "/scratchpwa/static/assets/0003d379a621d85693a57795339255cd.png",
     "revision": "0003d379a621d85693a57795339255cd"
@@ -5321,9 +5321,6 @@ define(['./workbox-b5366f8b'], (function (workbox) { 'use strict';
   }, {
     "revision": null,
     "url": "https://assets.scratch.mit.edu/internalapi/asset/c8d90320d2966c08af8cdd1c6a7a93b5.png/get/"
-  }, {
-    "revision": null,
-    "url": "https://cdn.assets.scratch.mit.edu/internalapi/asset/c8d90320d2966c08af8cdd1c6a7a93b5.png/get/"
   }], {});
 
 }));
