@@ -5320,16 +5320,16 @@ define(['./workbox-b5366f8b'], (function (workbox) { 'use strict';
     "revision": "5eba82c820a3e129fbbed93e783e987f"
   }, {
     "revision": null,
-    "url": "https://cdn.assets.scratch.mit.edu/internalapi/asset/0015433a406a53f00b792424b823268c.png"
+    "url": "https://cdn.assets.scratch.mit.edu/internalapi/asset/0015433a406a53f00b792424b823268c.png/get/"
   }, {
     "revision": null,
-    "url": "https://cdn.assets.scratch.mit.edu/internalapi/asset/001a2186db228fdd9bfbf3f15800bb63.svg"
+    "url": "https://cdn.assets.scratch.mit.edu/internalapi/asset/001a2186db228fdd9bfbf3f15800bb63.svg/get/"
   }, {
     "revision": null,
-    "url": "https://cdn.assets.scratch.mit.edu/internalapi/asset/001a2186db228fdd9bfbf3f15800bb63.svg"
+    "url": "https://cdn.assets.scratch.mit.edu/internalapi/asset/001a2186db228fdd9bfbf3f15800bb63.svg/get/"
   }, {
     "revision": null,
-    "url": "https://cdn.assets.scratch.mit.edu/internalapi/asset/0039635b1d6853face36581784558454.wav"
+    "url": "https://cdn.assets.scratch.mit.edu/internalapi/asset/0039635b1d6853face36581784558454.wav/get/"
   }], {});
 
 }));
