@@ -97,7 +97,7 @@ const base = {
     swDest: 'sw.js',
     clientsClaim: true,
     skipWaiting: true,
-    dontCacheBustURLsMatching: ['^https:\/\/assets.scratch.mit.edu\/internalapi\/asset\/.*$'],
+    dontCacheBustURLsMatching:/^https:\/\/assets.scratch.mit.edu\/internalapi\/asset\/.*$/,
     additionalManifestEntries: [         "https://assets.scratch.mit.edu/internalapi/asset/0015433a406a53f00b792424b823268c.png",
                 "https://assets.scratch.mit.edu/internalapi/asset/001a2186db228fdd9bfbf3f15800bb63.svg",
         "https://assets.scratch.mit.edu/internalapi/asset/001a2186db228fdd9bfbf3f15800bb63.svg",
