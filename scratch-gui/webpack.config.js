@@ -99,6 +99,7 @@ const base = {
     skipWaiting: true,
         modifyURLPrefix: {
       '': '/scratchpwa/',
+      'https://assets.scratch.mit.edu/internalapi/asset/' : 'https://cdn.assets.scratch.mit.edu/internalapi/asset/',
 }
       })
       ]
