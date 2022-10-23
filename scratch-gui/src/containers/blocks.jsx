@@ -98,6 +98,8 @@ class Blocks extends React.Component {
         );
         this.workspace = this.ScratchBlocks.inject(this.blocks, workspaceConfig);
 
+        this.workspace.toolbox_.flyout_.autoClose = true;  // TAGADDED
+
         // Register buttons under new callback keys for creating variables,
         // lists, and procedures from extensions.
 
