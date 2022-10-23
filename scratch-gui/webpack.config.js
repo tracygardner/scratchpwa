@@ -93,6 +93,7 @@ const base = {
     },
     plugins: [
       new WorkboxWebpackPlugin.GenerateSW({
+    maximumFileSizeToCacheInBytes: 40000000, // For large bundles
     swDest: 'sw.js',
     clientsClaim: true,
     skipWaiting: true,
