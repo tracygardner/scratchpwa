@@ -29,7 +29,7 @@ import DeletionRestorer from '../../containers/deletion-restorer.jsx';
 import TurboMode from '../../containers/turbo-mode.jsx';
 import MenuBarHOC from '../../containers/menu-bar-hoc.jsx';
 
-import {openTipsLibrary} from '../../reducers/modals';
+//import {openTipsLibrary} from '../../reducers/modals';
 import {setPlayer} from '../../reducers/mode';
 import {
     autoUpdateProject,
@@ -82,11 +82,6 @@ const ariaMessages = defineMessages({
         id: 'gui.menuBar.LanguageSelector',
         defaultMessage: 'language selector',
         description: 'accessibility text for the language selection menu'
-    },
-    tutorials: {
-        id: 'gui.menuBar.tutorialsLibrary',
-        defaultMessage: 'Tutorials',
-        description: 'accessibility text for the tutorials button'
     }
 });
 
@@ -531,19 +526,7 @@ class MenuBar extends React.Component {
                         </div>
                     </div>
                     <Divider className={classNames(styles.divider)} />
-                    <div
-                        aria-label={this.props.intl.formatMessage(ariaMessages.tutorials)}
-                        className={classNames(styles.menuBarItem, styles.hoverable)}
-                        onClick={this.props.onOpenTipLibrary}
-                    >
-                        <img
-                            className={styles.helpIcon}
-                            src={helpIcon}
-                        />
-                        <FormattedMessage {...ariaMessages.tutorials} />
-                    </div>
-                    <Divider className={classNames(styles.divider)} />
-                    {this.props.canEditTitle ? (
+                    {/*this.props.canEditTitle*/ true ? (
                         <div className={classNames(styles.menuBarItem, styles.growable)}>
                             <MenuBarItemTooltip
                                 enable
@@ -856,7 +839,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     autoUpdateProject: () => dispatch(autoUpdateProject()),
-    onOpenTipLibrary: () => dispatch(openTipsLibrary()),
+   // onOpenTipLibrary: () => dispatch(openTipsLibrary()),
     onClickAccount: () => dispatch(openAccountMenu()),
     onRequestCloseAccount: () => dispatch(closeAccountMenu()),
     onClickFile: () => dispatch(openFileMenu()),
