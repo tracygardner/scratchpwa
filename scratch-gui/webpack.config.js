@@ -92,15 +92,15 @@ const base = {
         ]
     },
     plugins: [
-      new WorkboxWebpackPlugin.InjectManifest({
-      swSrc: "./src/src-sw.js",
-      swDest: "sw.js",
-      modifyURLPrefix: {
-  '/dist/': '/',
-  '': '/static',
+      new WorkboxWebpackPlugin.GenerateSW({
+    swDest: 'sw.js',
+    clientsClaim: true,
+    skipWaiting: true,
+        modifyURLPrefix: {
+      '': '/scratchpwa/',
 }
       })
-    ]
+      ]
 };
 
 if (!process.env.CI) {

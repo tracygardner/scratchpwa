@@ -35,11 +35,3 @@ if (supportedBrowser()) {
     ReactDOM.render(<WrappedBrowserModalComponent onBack={handleBack} />, appTarget);
 }
 
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-      const wb = new Workbox("/scratchpwa/sw.js");
-    
-wb.register();
-  });
-
-}
