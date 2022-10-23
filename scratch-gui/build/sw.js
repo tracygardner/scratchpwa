@@ -5320,6 +5320,9 @@ define(['./workbox-b5366f8b'], (function (workbox) { 'use strict';
     "revision": "5eba82c820a3e129fbbed93e783e987f"
   }, {
     "revision": null,
+    "url": "https://assets.scratch.mit.edu/internalapi/asset/c8d90320d2966c08af8cdd1c6a7a93b5.png/get/"
+  }, {
+    "revision": null,
     "url": "https://cdn.assets.scratch.mit.edu/internalapi/asset/c8d90320d2966c08af8cdd1c6a7a93b5.png/get/"
   }], {});
 
