@@ -21,6 +21,11 @@ import styles from './stage-header.css';
 
 const messages = defineMessages({
     largeStageSizeMessage: {
+        defaultMessage: 'Show keyboard',
+        description: 'Show keyboard to enter keys on mobile',
+        id: 'gui.stageHeader.keyboard'
+    },
+    largeStageSizeMessage: {
         defaultMessage: 'Switch to large stage',
         description: 'Button to change stage size to large',
         id: 'gui.stageHeader.stageSizeLarge'
@@ -54,6 +59,7 @@ const StageHeaderComponent = function (props) {
         onKeyPress,
         onSetStageLarge,
         onSetStageSmall,
+        toggleKeyboard,
         onSetStageFull,
         onSetStageUnFull,
         showBranding,
@@ -108,8 +114,14 @@ const StageHeaderComponent = function (props) {
         const stageControls =
             isPlayerOnly ? (
                 []
-            ) : (
+            ) : (          
                 <div className={styles.stageSizeToggleGroup}>
+                  <div>
+                    <Button
+                      onClick={toggleKeyboard}>
+               <span className={classNames(
+                                styles.stageButton)} >⌨</span>
+              </Button></div>
                     <div>
                         <Button
                             className={classNames(
@@ -188,6 +200,7 @@ StageHeaderComponent.propTypes = {
     onSetStageFull: PropTypes.func.isRequired,
     onSetStageLarge: PropTypes.func.isRequired,
     onSetStageSmall: PropTypes.func.isRequired,
+    toggleKeyboard: PropTypes.func.isRequired,
     onSetStageUnFull: PropTypes.func.isRequired,
     showBranding: PropTypes.bool.isRequired,
     stageSizeMode: PropTypes.oneOf(Object.keys(STAGE_SIZE_MODES)),

@@ -88,6 +88,7 @@ const vmListenerHOC = function (WrappedComponent) {
             if (e.target !== document && e.target !== document.body) return;
 
             const key = (!e.key || e.key === 'Dead') ? e.keyCode : e.key;
+            //console.log("Key press " + key);
             this.props.vm.postIOData('keyboard', {
                 key: key,
                 isDown: true
@@ -113,6 +114,7 @@ const vmListenerHOC = function (WrappedComponent) {
                 e.preventDefault();
             }
         }
+       
         render () {
             const {
                 /* eslint-disable no-unused-vars */
@@ -135,10 +137,12 @@ const vmListenerHOC = function (WrappedComponent) {
                 onTurboModeOff,
                 onTurboModeOn,
                 onShowExtensionAlert,
+                onChange,
+                onKeyPress,
                 /* eslint-enable no-unused-vars */
                 ...props
             } = this.props;
-            return <WrappedComponent {...props} />;
+            return <WrappedComponent {...props} />
         }
     }
     VMListener.propTypes = {

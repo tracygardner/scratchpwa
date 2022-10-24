@@ -9,6 +9,7 @@ import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import tabStyles from 'react-tabs/style/react-tabs.css';
 import VM from 'scratch-vm';
 import Renderer from 'scratch-render';
+import VirtualKeyboard from '../keyboard/keyboard.jsx'
 
 import Blocks from '../../containers/blocks.jsx';
 import CostumeTab from '../../containers/costume-tab.jsx';
@@ -80,6 +81,7 @@ const GUIComponent = props => {
         costumeLibraryVisible,
         costumesTabVisible,
         enableCommunity,
+        hasKeyboard,
         intl,
         isCreating,
         isFullScreen,
@@ -341,12 +343,17 @@ const GUIComponent = props => {
                                 stageSize={stageSize}
                                 vm={vm}
                             />
+                          <div id="keyboard" style={{display: 'none'}}>
+                            <VirtualKeyboard
+                            vm={vm}
+                          />
+                            </div>
                             <Box className={styles.targetWrapper}>
                                 <TargetPane
                                     stageSize={stageSize}
                                     vm={vm}
                                 />
-                            </Box>
+                            </Box>                          
                         </Box>
                     </Box>
                 </Box>
