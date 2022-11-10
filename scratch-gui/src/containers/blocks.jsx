@@ -155,6 +155,8 @@ class Blocks extends React.Component {
         // If any modals are open, call hideChaff to close z-indexed field editors
         if (this.props.anyModalVisible && !prevProps.anyModalVisible) {
             this.ScratchBlocks.hideChaff();
+            this.workspace.flyout_.hide();
+            this.workspace.recordDeleteAreas();
         }
 
         // Only rerender the toolbox when the blocks are visible and the xml is
@@ -214,18 +216,30 @@ class Blocks extends React.Component {
     }
 
     updateToolbox () {
-        this.toolboxUpdateTimeout = false;
 
-        const categoryId = this.workspace.toolbox_.getSelectedCategoryId();
-        const offset = this.workspace.toolbox_.getCategoryScrollOffset();
+      var tree = this.workspace.getToolbox().tree_;  
+      var categoryId;
+      if(tree)
+      {
+         categoryId = this.workspace.toolbox_.getSelectedCategoryId()
+      }
+      else {
+        categoryId = 'motion';
+        this.workspace.toolbox_.setSelectedCategoryId('motion')
+      }
+      
+      this.toolboxUpdateTimeout = false;          
         this.workspace.updateToolbox(this.props.toolboxXML);
         this._renderedToolboxXML = this.props.toolboxXML;
 
-        // In order to catch any changes that mutate the toolbox during "normal runtime"
+          const offset = this.workspace.toolbox_.getCategoryScrollOffset();
+
+      
+           // In order to catch any changes that mutate the toolbox during "normal runtime"
         // (variable changes/etc), re-enable toolbox refresh.
         // Using the setter function will rerender the entire toolbox which we just rendered.
         this.workspace.toolboxRefreshEnabled_ = true;
-
+          
         const currentCategoryPos = this.workspace.toolbox_.getCategoryPositionById(categoryId);
         const currentCategoryLen = this.workspace.toolbox_.getCategoryLengthById(categoryId);
         if (offset < currentCategoryLen) {
@@ -233,10 +247,11 @@ class Blocks extends React.Component {
         } else {
             this.workspace.toolbox_.setFlyoutScrollPos(currentCategoryPos);
         }
-
+        
         const queue = this.toolboxUpdateQueue;
         this.toolboxUpdateQueue = [];
         queue.forEach(fn => fn());
+        
     }
 
     withToolboxUpdates (fn) {
