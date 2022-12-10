@@ -1,5 +1,111 @@
 import ScratchBlocks from 'scratch-blocks';
 
+// Added code from https://github.com/LLK/scratch-blocks/issues/1778
+import Blockly from 'scratch-blocks';
+
+Blockly.Toolbox.prototype.scrollToCategoryByName = function(name) {
+// start 
+ if (!this.flyout_.isVisible_) {
+    this.refreshSelection();
+  }
+// end
+
+  var scrollPositions = this.flyout_.categoryScrollPositions;
+  for (var i = 0; i < scrollPositions.length; i++) {
+    if (name === scrollPositions[i].categoryName) {
+      this.flyout_.setVisible(true);
+      this.flyout_.scrollTo(scrollPositions[i].position);
+      return;
+    }
+  }
+};
+
+Blockly.Toolbox.prototype.scrollToCategoryById = function(id) {
+
+// start 
+ if (!this.flyout_.isVisible_) {
+    this.refreshSelection();
+  }
+// end
+
+  var scrollPositions = this.flyout_.categoryScrollPositions;
+  for (var i = 0; i < scrollPositions.length; i++) {
+    if (id === scrollPositions[i].categoryId) {
+      this.flyout_.setVisible(true);
+      this.flyout_.scrollTo(scrollPositions[i].position);
+      return;
+    }
+  }
+};
+
+// Horrible hacks based on https://github.com/LLK/scratch-blocks/issues/1067
+Blockly.VerticalFlyout.prototype.autoClose = true;
+
+Blockly.Toolbox.prototype.setWidth = function(width) {
+  this.width = width;
+};
+
+Blockly.WorkspaceSvg.getTopLevelWorkspaceMetrics_ = function() {
+
+  var toolboxDimensions =
+      Blockly.WorkspaceSvg.getDimensionsPx_(this.toolbox_);
+  toolboxDimensions.width = 52;
+  var flyoutDimensions =
+      Blockly.WorkspaceSvg.getDimensionsPx_(this.flyout_);
+
+  // Contains height and width in CSS pixels.
+  // svgSize is equivalent to the size of the injectionDiv at this point.
+  var svgSize = Blockly.svgSize(this.getParentSvg());
+  if (this.toolbox_) {
+    if (this.toolboxPosition == Blockly.TOOLBOX_AT_TOP ||
+        this.toolboxPosition == Blockly.TOOLBOX_AT_BOTTOM) {
+      svgSize.height -= toolboxDimensions.height;
+    } else if (this.toolboxPosition == Blockly.TOOLBOX_AT_LEFT ||
+        this.toolboxPosition == Blockly.TOOLBOX_AT_RIGHT) {
+      svgSize.width -= toolboxDimensions.width;
+    }
+  }
+
+  // svgSize is now the space taken up by the Blockly workspace, not including
+  // the toolbox.
+  var contentDimensions =
+      Blockly.WorkspaceSvg.getContentDimensions_(this, svgSize);
+
+  var absoluteLeft = 0;
+  if (this.toolbox_ && this.toolboxPosition == Blockly.TOOLBOX_AT_LEFT) {
+    absoluteLeft = toolboxDimensions.width;
+  }
+  var absoluteTop = 0;
+  if (this.toolbox_ && this.toolboxPosition == Blockly.TOOLBOX_AT_TOP) {
+    absoluteTop = toolboxDimensions.height;
+  }
+
+  var metrics = {
+    contentHeight: contentDimensions.height,
+    contentWidth: contentDimensions.width,
+    contentTop: contentDimensions.top,
+    contentLeft: contentDimensions.left,
+
+    viewHeight: svgSize.height,
+    viewWidth: svgSize.width,
+    viewTop: -this.scrollY,   // Must be in pixels, somehow.
+    viewLeft: -this.scrollX,  // Must be in pixels, somehow.
+
+    absoluteTop: absoluteTop,
+    absoluteLeft: absoluteLeft,
+
+    toolboxWidth: toolboxDimensions.width,
+    toolboxHeight: toolboxDimensions.height,
+
+    flyoutWidth: flyoutDimensions.width,
+    flyoutHeight: flyoutDimensions.height,
+
+    toolboxPosition: this.toolboxPosition
+  };
+  return metrics;
+};
+
+
 /**
  * Connect scratch blocks with the vm
  * @param {VirtualMachine} vm - The scratch vm

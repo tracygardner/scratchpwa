@@ -26,7 +26,9 @@ const reducer = function (state, action) {
 const updateMetrics = function (metrics) {
     return {
         type: UPDATE_METRICS,
-        ...metrics
+        ...metrics,
+		absoluteLeft: metrics.absoluteLeft - 250,
+        viewWidth: metrics.viewWidth + 250,		
     };
 };
 
