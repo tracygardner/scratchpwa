@@ -109,7 +109,7 @@ define(['./workbox-b5366f8b'], (function (workbox) { 'use strict';
     "revision": "9a1b34c26f76fa70ab749076656c9454"
   }, {
     "url": "/scratchpwa/lib.min.js",
-    "revision": "9b02ae71e75f13f52cf1d365904da7cc"
+    "revision": "9da0af2b7a3ca16b10c381ad2e5a223c"
   }, {
     "url": "/scratchpwa/static/assets/02d927ce93445be737c7ff43fb98b135.svg",
     "revision": null
