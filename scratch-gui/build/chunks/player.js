@@ -13,7 +13,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".player_stage-only_3WHZN {\n    width: calc(480px + 1rem);\n}\n\n.player_editor_wkTja {\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 100%;\n    width: 100%;\n}\n\n.player_stage-only_3WHZN * {\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n}\n", ""]);
+exports.push([module.i, ".player_stage-only_3WHZN {\n    width: calc(480px + 1rem);\n}\n\n@media screen and (orientation: portrait) and (max-width: 479px) {\n.player_stage-only_3WHZN {\n    width: 100vw;\n}\n}\n\n/* Portrait orientation */\n\n@media screen and (orientation: portrait) {\n.player_editor_wkTja {\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 200vw;\n    width: 100vh;\n}\n}\n\n/* Landscape orientation */\n\n@media screen and (orientation: landscape) {\n$.player_editor_wkTja {\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 100vw;\n    width: 100vh;\n}\n}\n\n.player_stage-only_3WHZN * {\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n}\n", ""]);
 
 // exports
 exports.locals = {

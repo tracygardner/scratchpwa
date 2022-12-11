@@ -56,6 +56,7 @@ class Blocks extends React.Component {
 			'getToolboxXML',
 			'handleCategorySelected',
 			'handleConnectionModalStart',
+			'handleClick',
 			'handleDrop',
 			'handleStatusButtonUpdate',
 			'handleOpenSoundRecorder',
@@ -118,6 +119,8 @@ class Blocks extends React.Component {
 		toolboxWorkspace.registerButtonCallback('MAKE_A_VARIABLE', varListButtonCallback(''));
 		toolboxWorkspace.registerButtonCallback('MAKE_A_LIST', varListButtonCallback('list'));
 		toolboxWorkspace.registerButtonCallback('MAKE_A_PROCEDURE', procButtonCallback);
+		document.addEventListener('click', this.handleClick);
+		document.addEventListener('touchend', this.handleClick);
 
 		// Store the xml of the toolbox that is actually rendered.
 		// This is used in componentDidUpdate instead of prevProps, because
@@ -195,6 +198,8 @@ class Blocks extends React.Component {
 		}
 	}
 	componentWillUnmount() {
+		document.removeEventListener('click', this.handleClick);
+		document.removeEventListener('touchend', this.handleClick);
 		this.detachVM();
 		this.workspace.dispose();
 		clearTimeout(this.toolboxUpdateTimeout);
@@ -222,17 +227,20 @@ class Blocks extends React.Component {
 	updateToolbox() {
 
 		this.toolboxUpdateTimeout = false;
+	
+		this.workspace.toolbox_.refreshSelection();
 
-		this.workspace.updateToolbox(this.props.toolboxXML);
-		this._renderedToolboxXML = this.props.toolboxXML;
-
-		const categoryId = this.workspace.toolbox_.getSelectedCategoryId();
+		//alert("update" + this.workspace.getToolbox().getSelectedCategoryId());
+		const categoryId = this.workspace.toolbox_.getSelectedCategoryId();		
 		const offset = this.workspace.toolbox_.getCategoryScrollOffset();
 
 		// In order to catch any changes that mutate the toolbox during "normal runtime"
 		// (variable changes/etc), re-enable toolbox refresh.
 		// Using the setter function will rerender the entire toolbox which we just rendered.
 		this.workspace.toolboxRefreshEnabled_ = true;
+
+		this.workspace.updateToolbox(this.props.toolboxXML);
+		this._renderedToolboxXML = this.props.toolboxXML;
 
 		const currentCategoryPos = this.workspace.toolbox_.getCategoryPositionById(categoryId);
 		const currentCategoryLen = this.workspace.toolbox_.getCategoryLengthById(categoryId);
@@ -513,6 +521,14 @@ class Blocks extends React.Component {
 		this.props.onOpenSoundRecorder();
 	}
 
+	handleClick (e) {
+		if (this.workspace.getFlyout() && e.target.classList.contains('blocklyMainBackground')){ 
+			 this.workspace
+			.getFlyout()
+			.hide();
+        }     
+    }
+
 	/*
 	 * Pass along information about proposed name and variable options (scope and isCloud)
 	 * and additional potentially conflicting variable names from the VM
@@ -535,7 +551,6 @@ class Blocks extends React.Component {
 		ws.toolbox_.scrollToCategoryById('myBlocks');
 	}
 	handleDrop(dragInfo) {
-		alert("drop")
 		fetch(dragInfo.payload.bodyUrl)
 			.then(response => response.json())
 			.then(blocks => this.props.vm.shareBlocksToTarget(blocks, this.props.vm.editingTarget.id))

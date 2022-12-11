@@ -7,8 +7,39 @@ body,
     margin: 0;
 
     /* Setting min height/width makes the UI scroll below those sizes */
-    min-width: 1024px;
+    /*min-width: 1024px;
+    min-height: 640px;*/ /* Min height to fit sprite/backdrop button */
+}
+
+/* Portrait orientation */
+@media screen and (orientation: portrait) {
+html,
+body,
+.app {
+    /* probably unecessary, transitional until layout is refactored */
+    width: 200vw; 
+    height: 100vh;
+    margin: 0;
+
+    /* Setting min height/width makes the UI scroll below those sizes */
+    /*min-width: 1024px;*/
+    /*min-height: 640px;*/ /* Min height to fit sprite/backdrop button */
+}
+}
+/* Landscape orientation */
+@media screen and (orientation: landscape) {
+html,
+body,
+.app {
+    /* probably unecessary, transitional until layout is refactored */
+    width: 100vw; 
+    height: 100vh;
+    margin: 0;
+
+    /* Setting min height/width makes the UI scroll below those sizes */
+    /*min-width: 1024px;*/
     min-height: 640px; /* Min height to fit sprite/backdrop button */
+}
 }
 
 /* @todo: move globally? Safe / side FX, for blocks particularly? */

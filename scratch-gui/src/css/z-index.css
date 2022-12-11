@@ -30,3 +30,4 @@ $z-index-stage-wrapper-overlay: 5000;
 
 /* in most interfaces, the context menu is always on top */
 $z-index-context-menu: 10000;
+

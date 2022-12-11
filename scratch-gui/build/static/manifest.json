@@ -6,7 +6,6 @@
   "short_name": "Scratch offline",
   "theme_color": "#e30b5d",
   "description": "Scratch offline",
-  "orientation": "portrait",
   "background_color": "#e30b5d",
   "related_applications": [],
   "prefer_related_applications": false,

@@ -55,6 +55,7 @@
     -ms-overflow-style: none;
 }
 
+
 [dir="rtl"] .blocks :global(.blocklyToolboxDiv) {
     border-right: none;
     border-left: 1px solid $ui-black-transparent;

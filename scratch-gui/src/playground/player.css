@@ -2,13 +2,35 @@
     width: calc(480px + 1rem);
 }
 
+@media screen and (orientation: portrait) and (max-width: 479px) {
+.stage-only {
+    width: 100vw;
+}
+}
+
+
+
+/* Portrait orientation */
+@media screen and (orientation: portrait) {
 .editor {
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%;
-    width: 100%;
+    height: 200vw;
+    width: 100vh;
 }
+}
+/* Landscape orientation */
+@media screen and (orientation: landscape) {
+$.editor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vw;
+    width: 100vh;
+}
+}
+
 
 .stage-only * {
     box-sizing: border-box;

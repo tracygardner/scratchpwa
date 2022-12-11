@@ -28,3 +28,12 @@ $menu-bar-large-font-size: 0.875rem;
 $menu-bar-button-size: 2rem;
 
 $menu-bar-item-max-width: 12rem;
+
+/* Portrait orientation */
+@media screen and (orientation: portrait) {
+$full-size: 200vw;
+}
+/* Landscape orientation */
+@media screen and (orientation: landscape) {
+$full-size: 100vw;
+}

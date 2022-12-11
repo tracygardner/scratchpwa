@@ -100,16 +100,16 @@ define(['./workbox-b5366f8b'], (function (workbox) { 'use strict';
     "revision": "88a0a09aaf2467ab6f8219e73116f9b6"
   }, {
     "url": "/scratchpwa/chunks/gui.js",
-    "revision": "b0dbb9359233b3be37cf0a05e37af04f"
+    "revision": "13daf92dee3ec67f2c146bd11cdb46b1"
   }, {
     "url": "/scratchpwa/chunks/player.js",
-    "revision": "57d3ca68e0b73389a20288438858d608"
+    "revision": "1c3ea3eaf3c9155c5fc5926067e2036c"
   }, {
     "url": "/scratchpwa/extension-worker.js",
     "revision": "9a1b34c26f76fa70ab749076656c9454"
   }, {
     "url": "/scratchpwa/lib.min.js",
-    "revision": "9da0af2b7a3ca16b10c381ad2e5a223c"
+    "revision": "78c95410e0591949d2a2cd1fe3afd63d"
   }, {
     "url": "/scratchpwa/static/assets/02d927ce93445be737c7ff43fb98b135.svg",
     "revision": null
@@ -853,7 +853,7 @@ define(['./workbox-b5366f8b'], (function (workbox) { 'use strict';
     "revision": "7383290bf283286cc7bf34b753b47683"
   }, {
     "url": "/scratchpwa/static/manifest.json",
-    "revision": "7ac7d2bf989a5ac8ec9f6313f12bd129"
+    "revision": "0587fa81214e0ea5302dd3a7c7dc4f52"
   }, {
     "url": "/scratchpwa/static/maskable_icon.png",
     "revision": "5eba82c820a3e129fbbed93e783e987f"
