@@ -71,6 +71,8 @@
     user-select: none;
 }
 
+
+
 .sprite-name, .sprite-details {
     /*
         For truncating overflowing text gracefully
@@ -121,3 +123,9 @@
 [dir="rtl"] .number {
     right: 0.15rem;
 }
+
+
+@media screen and (min-width: 600px) and (max-width:1023px)  {
+
+}
+

@@ -34,6 +34,17 @@ $menu-bar-item-max-width: 12rem;
 $full-size: 200vw;
 }
 /* Landscape orientation */
-@media screen and (orientation: landscape) {
+/*@media screen and (orientation: landscape) {
 $full-size: 100vw;
+}*/
+
+@media screen and (max-width: 1023){
+	$space: 0.2rem;
+	$menu-bar-height: 2.2rem;
+	$menu-bar-standard-font-size: 0.65rem;
+	$menu-bar-large-font-size: 0.7rem;
+	$menu-bar-button-size: 1.5rem;
+	$stage-menu-height: 2rem;
+	$language-selector-width: 2.5rem;
+	$menu-bar-item-max-width: 8.5rem;
 }

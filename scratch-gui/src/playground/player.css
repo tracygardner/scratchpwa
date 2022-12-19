@@ -8,16 +8,14 @@
 }
 }
 
-
-
 /* Portrait orientation */
 @media screen and (orientation: portrait) {
 .editor {
     position: absolute;
     top: 0;
     left: 0;
-    height: 200vw;
-    width: 100vh;
+    width: 100vw;
+    
 }
 }
 /* Landscape orientation */
@@ -26,8 +24,7 @@ $.editor {
     position: absolute;
     top: 0;
     left: 0;
-    height: 100vw;
-    width: 100vh;
+   
 }
 }
 

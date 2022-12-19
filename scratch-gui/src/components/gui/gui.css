@@ -2,6 +2,7 @@
 @import "../../css/colors.css";
 @import "../../css/z-index.css";
 
+
 .page-wrapper {
     height: 100%;
 }
@@ -33,6 +34,7 @@
     overflow-y: hidden;
 }
 
+@media screen and (min-width: 1024px) {
 .editor-wrapper {
     /*
         This is carefully balanced--  the minimum width at which the GUI will be displayed is 1024px.
@@ -51,18 +53,6 @@
 
     display: flex;
     flex-direction: column;
-}
-
-/* Portrait orientation */
-@media screen and (orientation: portrait) and (max-width: 1024px) {
-.editor-wrapper {
-	flex-basis: 100vw;
-}
-}
-/* Landscape orientation */
-@media screen and (orientation: landscape) and (max-width: 1024px) {
-.editor-wrapper {
-	flex-basis: calc(100vw - 408px - (($space + $stage-standard-border-width) * 2)));
 }
 }
 
@@ -332,4 +322,68 @@ $fade-out-distance: 15px;
     overflow: hidden;
 }
 
+/* Portrait orientation */
+@media screen and (max-width: 450px) {
+.editor-wrapper {
+	flex-basis: 100vw;
+	flex-grow: 1;
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+}
+/* Landscape orientation */
+@media screen and (min-width: 600px) and (max-width:1023px)  { 
+
+.editor-wrapper { 
+	flex-basis: calc(100vw - 320px - (($space + $stage-standard-border-width) * 2)));
+	
+	flex-grow: 1;
+    flex-shrink: 0;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+}
+	
+.target-wrapper {
+padding-top: calc($space / 4);
+flex-shrink: 1;
+}
+
+.tab span {
+	display: none;
+}
+
+.tab-list {
+	height: 2rem;
+}
+
+.stage-and-target-wrapper {
+	flex-grow: 1;
+	flex-shrink: 1;
+}
+	
+}
+
+@media screen and (max-width:599px)  { 
+.stage-and-target-wrapper {
+	width: 100vw;
+}
+}
+
+@media screen and (min-width: 600px) and (max-width:1023px)  { 
+.tab {
+	padding: 0.2rem 0.6rem 0;
+    font-size: 0.7rem;
+	height: 95%;
+}
+.tab.is-selected {
+    height: 100%;
+}
+.tab-list {
+    height: 1.5rem;
+}
+}
 

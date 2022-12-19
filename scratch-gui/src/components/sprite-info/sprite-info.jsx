@@ -146,7 +146,7 @@ class SpriteInfo extends React.Component {
         );
 
         if (stageSize === STAGE_DISPLAY_SIZES.small) {
-            return (
+            /*return (
                 <Box className={styles.spriteInfo}>
                     <div className={classNames(styles.row, styles.rowPrimary)}>
                         <div className={styles.group}>
@@ -158,33 +158,20 @@ class SpriteInfo extends React.Component {
                         {yPosition}
                     </div>
                 </Box>
-            );
+            );*/
         }
 
         return (
             <Box className={styles.spriteInfo}>
                 <div className={classNames(styles.row, styles.rowPrimary)}>
                     <div className={styles.group}>
-                        <Label
-                            above={labelAbove}
-                            text={sprite}
-                        >
                             {spriteNameInput}
-                        </Label>
                     </div>
                     {xPosition}
                     {yPosition}
                 </div>
                 <div className={classNames(styles.row, styles.rowSecondary)}>
                     <div className={labelAbove ? styles.column : styles.group}>
-                        {
-                            stageSize === STAGE_DISPLAY_SIZES.large ?
-                                <Label
-                                    secondary
-                                    text={showLabel}
-                                /> :
-                                null
-                        }
                         <div className={styles.radioWrapper}>
                             <div
                                 className={classNames(
@@ -230,7 +217,7 @@ class SpriteInfo extends React.Component {
                         <Label
                             secondary
                             above={labelAbove}
-                            text={sizeLabel}
+                            text='%' //{sizeLabel}
                         >
                             <BufferedInput
                                 small

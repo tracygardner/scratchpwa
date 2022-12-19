@@ -60,6 +60,11 @@ const openLoginMenu = () => openMenu(MENU_LOGIN);
 const closeLoginMenu = () => closeMenu(MENU_LOGIN);
 const loginMenuOpen = state => state.scratchGui.menus[MENU_LOGIN];
 
+
+const requestFullscreen = function() {
+  document.body.requestFullscreen();
+};
+
 export {
     reducer as default,
     initialState as menuInitialState,
@@ -80,5 +85,6 @@ export {
     languageMenuOpen,
     openLoginMenu,
     closeLoginMenu,
-    loginMenuOpen
+    loginMenuOpen,
+	requestFullscreen
 };

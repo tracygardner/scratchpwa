@@ -52,7 +52,6 @@ Blockly.Toolbox.prototype.scrollToCategoryById = function(id) {
 	}
 };
 
-
 // Horrible hack based on https://github.com/LLK/scratch-blocks/issues/1067
 Blockly.VerticalFlyout.prototype.autoClose = true;
 

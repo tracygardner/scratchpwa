@@ -100,16 +100,16 @@ define(['./workbox-b5366f8b'], (function (workbox) { 'use strict';
     "revision": "88a0a09aaf2467ab6f8219e73116f9b6"
   }, {
     "url": "/scratchpwa/chunks/gui.js",
-    "revision": "13daf92dee3ec67f2c146bd11cdb46b1"
+    "revision": "04e3d53e2ea93c5717e86c353d09f103"
   }, {
     "url": "/scratchpwa/chunks/player.js",
-    "revision": "1c3ea3eaf3c9155c5fc5926067e2036c"
+    "revision": "3eec3650ebbdbeb7b89eca33def8c97c"
   }, {
     "url": "/scratchpwa/extension-worker.js",
     "revision": "9a1b34c26f76fa70ab749076656c9454"
   }, {
     "url": "/scratchpwa/lib.min.js",
-    "revision": "78c95410e0591949d2a2cd1fe3afd63d"
+    "revision": "f4576fbc1447ce04ec6dac52e64a0613"
   }, {
     "url": "/scratchpwa/static/assets/02d927ce93445be737c7ff43fb98b135.svg",
     "revision": null

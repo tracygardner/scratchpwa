@@ -20,3 +20,43 @@
 [dir="rtl"] .stage-selector-wrapper {
     margin-right: calc($space / 2);
 }
+
+@media screen and (min-width: 600px) and (max-width:1023px)  { 
+
+.target-pane {
+	 flex-shrink: 1;
+}
+	
+.stage-selector-wrapper {
+    flex-basis: 48px;
+    flex-shrink: 1;
+}
+
+[dir="ltr"] .stage-selector-wrapper {
+    margin-left: calc($space / 4);
+}
+
+[dir="rtl"] .stage-selector-wrapper {
+    margin-right: calc($space / 4);
+}
+
+}
+
+@media screen and (max-width:599px)  { 
+.target-pane {
+	width: calc(100vw - ($space * 2));
+}
+
+.stage-selector-wrapper {
+    flex-basis: 48px;
+    flex-shrink: 1
+}
+
+[dir="ltr"] .stage-selector-wrapper {
+    margin-left: calc($space / 4);
+}
+
+[dir="rtl"] .stage-selector-wrapper {
+    margin-right: calc($space / 4);
+}
+}

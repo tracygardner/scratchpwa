@@ -8,8 +8,8 @@ import {STAGE_DISPLAY_SIZES} from '../../lib/layout-constants.js';
 import StageHeader from '../../containers/stage-header.jsx';
 import Stage from '../../containers/stage.jsx';
 import Loader from '../loader/loader.jsx';
-
 import styles from './stage-wrapper.css';
+import VirtualKeyboard from '../keyboard/keyboard.jsx'
 
 const StageWrapperComponent = function (props) {
     const {
@@ -18,7 +18,13 @@ const StageWrapperComponent = function (props) {
         isRendererSupported,
         loading,
         stageSize,
-        vm
+		stage,
+        vm,
+		onSelectSprite,
+		editingTarget,
+		onActivateBlocksTab,
+		onRequestCloseSpriteLibrary,
+		spriteLibraryVisible 
     } = props;
 
     return (
@@ -41,10 +47,15 @@ const StageWrapperComponent = function (props) {
                         <Stage
                             stageSize={stageSize}
                             vm={vm}
-                        /> :
-                        null
+                        /> 						
+					: null
                 }
             </Box>
+			<div id="fullscreen-keyboard" style={{display: 'none'}}>
+                            <VirtualKeyboard
+                            vm={vm}
+                          />
+            </div>
             {loading ? (
                 <Loader isFullScreen={isFullScreen} />
             ) : null}
@@ -52,13 +63,14 @@ const StageWrapperComponent = function (props) {
     );
 };
 
+
 StageWrapperComponent.propTypes = {
     isFullScreen: PropTypes.bool,
     isRendererSupported: PropTypes.bool.isRequired,
     isRtl: PropTypes.bool.isRequired,
     loading: PropTypes.bool,
     stageSize: PropTypes.oneOf(Object.keys(STAGE_DISPLAY_SIZES)).isRequired,
-    vm: PropTypes.instanceOf(VM).isRequired
+    vm: PropTypes.instanceOf(VM).isRequired,
 };
 
 export default StageWrapperComponent;

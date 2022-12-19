@@ -21,7 +21,8 @@
 }
 .hg-theme-default .hg-button{
     display:inline-block;
-    flex-grow:1
+	width: 0.75rem;
+    flex-grow:1;
 }
 .hg-theme-default .hg-row{
     display:flex
@@ -48,26 +49,17 @@
     box-sizing:border-box;
     cursor:pointer;
     display:flex;
-    height:40px;
+    height: 2.5rem;
     justify-content:center;
     padding:5px
 }
 .hg-theme-default .hg-button.hg-standardBtn{
-    width:20px
+    width: 1rem;
 }
 .hg-theme-default .hg-button.hg-activeButton{
     background:#efefef
 }
-.hg-theme-default.hg-layout-numeric .hg-button{
-    align-items:center;
-    display:flex;
-    height:60px;
-    justify-content:center;
-    width:33.3%
-}
-.hg-theme-default .hg-button.hg-button-numpadadd,.hg-theme-default .hg-button.hg-button-numpadenter{
-    height:85px
-}
+
 .hg-theme-default .hg-button.hg-button-numpad0{
     width:105px
 }

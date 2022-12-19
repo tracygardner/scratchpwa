@@ -27,3 +27,20 @@
 .content {
     white-space: nowrap;
 }
+
+@media screen and (max-width:1023px)  { 
+.outlined-button {
+    padding-left: .25rem;
+    padding-right: .25rem;
+    user-select: none;
+}
+
+[dir="ltr"] .icon {
+    margin-right: .25rem;
+}
+
+[dir="rtl"] .icon {
+    margin-left: .25rem;
+}
+
+}

@@ -68,18 +68,19 @@ $fade-out-distance: 100px;
     margin: 0.5rem auto;
 }
 
-@media only screen and (max-width: $full-size-paint) {
-    .wrapper {
-        width: 80px;
-    }
-
-    .list-item {
-        width: 4rem;
-    }
-}
-
 
 .list-item.placeholder {
     background: white;
     filter: opacity(15%) brightness(0%);
+}
+
+@media screen and (max-width: 1023px){
+.wrapper {
+	width: 75px;
+	height: calc(100vh - 1.5rem);
+}
+ .list-item {
+    width: 3rem;
+	height: 4rem;
+}
 }

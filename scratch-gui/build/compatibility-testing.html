@@ -91,6 +91,23 @@
     background:rgba(5,25,70,.53);
     color:#fff
 }
+.hg-theme-default .hg-button.hg-button-space{
+    flex-basis: 50%;
+}
+.hg-theme-default .hg-button.hg-button-arrowleft{
+    width: 15%;
+}
+.hg-theme-default .hg-button.hg-button-arrowdown{
+    width: 15%;
+}
+.hg-theme-default .hg-button.hg-button-arrowright{
+    width: 15%;
+}
+
+.hg-theme-default .hg-button.hg-button-arrowup{
+    width: 15%;
+}
+		
 .hg-theme-default .hg-button.hg-standardBtn[data-skbtn=".com"]{
     max-width:82px
 }
@@ -155,6 +172,26 @@ li.hg-candidate-box-list-item:active{
 }
 .hg-candidate-box-btn-active{
     color:#444
+}
+
+@media screen and (min-width:600px) and (max-width:1023px)  { 
+#keyboard .hg-theme-default .hg-button{
+    height:25px;
+}
+
+#keyboard .hg-candidate-box-next,.hg-candidate-box-prev{
+    padding:0 5px
+}
+
+#keyboard .hg-theme-default .hg-row:not(:last-child){
+    margin-bottom:2px
+}
+#keyboard .hg-theme-default .hg-row .hg-button-container,.hg-theme-default .hg-row .hg-button:not(:last-child){
+    margin-right:2px
+}
+#keyboard .hg-theme-default{
+    padding:2px;
+}
 }
  
     </style>

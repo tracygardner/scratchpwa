@@ -48,6 +48,7 @@
 
 .stage-wrapper {
     position: relative;
+	display: flex;
 }
 
 /* we want stage overlays to all be positioned in the same spot as the stage, but can't put them inside the border
@@ -151,4 +152,19 @@ stage doesn't "spill" out from under its rounded corners. instead, shift these o
 @keyframes flash {
     0% { opacity: 1; }
     100% { opacity: 0; }
+}
+
+
+@media screen and (max-width: 1023px) { 
+
+.stage.full-screen {
+	width: 96vw;
+}
+}
+
+@media screen and (min-width: 600px) and (max-width:1023px)  { 
+
+.stage.full-screen {
+	width: 60vw;
+}
 }

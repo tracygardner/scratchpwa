@@ -4,7 +4,7 @@ import bindAll from 'lodash.bindall';
 import VM from 'scratch-vm';
 import {STAGE_SIZE_MODES} from '../lib/layout-constants';
 import {setStageSize} from '../reducers/stage-size';
-import {setFullScreen, toggleKeyboard} from '../reducers/mode';
+import {setFullScreen, toggleKeyboard, toggleMenuBar} from '../reducers/mode';
 
 import {connect} from 'react-redux';
 
@@ -56,6 +56,7 @@ const mapStateToProps = state => ({
     showBranding: state.scratchGui.mode.showBranding,
     isFullScreen: state.scratchGui.mode.isFullScreen,
     hasKeyboard: state.scratchGui.mode.hasKeyboard,
+	showMenuBar: state.scratchGui.mode.showMenuBar,
     isPlayerOnly: state.scratchGui.mode.isPlayerOnly
 });
 
@@ -64,7 +65,8 @@ const mapDispatchToProps = dispatch => ({
     onSetStageSmall: () => dispatch(setStageSize(STAGE_SIZE_MODES.small)),
     onSetStageFull: () => dispatch(setFullScreen(true)),
     onSetStageUnFull: () => dispatch(setFullScreen(false)),
-    toggleKeyboard: () => dispatch(toggleKeyboard(false))
+    toggleKeyboard: () => dispatch(toggleKeyboard(false)),
+	toggleMenuBar: () => dispatch(toggleMenuBar(true))
 });
 
 export default connect(

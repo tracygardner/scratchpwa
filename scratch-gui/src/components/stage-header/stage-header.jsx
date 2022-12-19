@@ -20,10 +20,15 @@ import scratchLogo from '../menu-bar/scratch-logo.svg';
 import styles from './stage-header.css';
 
 const messages = defineMessages({
-    largeStageSizeMessage: {
+    keyboardMessage: {
         defaultMessage: 'Show keyboard',
         description: 'Show keyboard to enter keys on mobile',
         id: 'gui.stageHeader.keyboard'
+    },
+	menuMessage: {
+        defaultMessage: 'Show menu',
+        description: 'Show file, edit and language menus',
+        id: 'gui.stageHeader.menubar'
     },
     largeStageSizeMessage: {
         defaultMessage: 'Switch to large stage',
@@ -60,6 +65,7 @@ const StageHeaderComponent = function (props) {
         onSetStageLarge,
         onSetStageSmall,
         toggleKeyboard,
+		toggleMenuBar,
         onSetStageFull,
         onSetStageUnFull,
         showBranding,
@@ -116,11 +122,17 @@ const StageHeaderComponent = function (props) {
                 []
             ) : (          
                 <div className={styles.stageSizeToggleGroup}>
+				 <div>
+                    <Button
+                      onClick={toggleMenuBar}>
+               <span className={classNames(
+                                styles.stageButton)} style={{background: "#4C97FF", color: "white", paddingLeft: "4px"} }>☰</span>
+              </Button></div>
                   <div>
                     <Button
                       onClick={toggleKeyboard}>
                <span className={classNames(
-                                styles.stageButton)} >⌨</span>
+                                styles.stageButton)}  style={{color: "#4C97FF"} }>⌨</span>
               </Button></div>
                     <div>
                         <Button
@@ -201,6 +213,7 @@ StageHeaderComponent.propTypes = {
     onSetStageLarge: PropTypes.func.isRequired,
     onSetStageSmall: PropTypes.func.isRequired,
     toggleKeyboard: PropTypes.func.isRequired,
+	toggleMenuBar: PropTypes.func.isRequired,
     onSetStageUnFull: PropTypes.func.isRequired,
     showBranding: PropTypes.bool.isRequired,
     stageSizeMode: PropTypes.oneOf(Object.keys(STAGE_SIZE_MODES)),

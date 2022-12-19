@@ -89,8 +89,6 @@ class Blocks extends React.Component {
 		this.toolboxUpdateQueue = [];
 	}
 
-
-	
 	componentDidMount() {
 		this.ScratchBlocks.FieldColourSlider.activateEyedropper_ = this.props.onActivateColorPicker;
 		this.ScratchBlocks.Procedures.externalProcedureDefCallback = this.props.onActivateCustomProcedures;
@@ -121,7 +119,7 @@ class Blocks extends React.Component {
 		toolboxWorkspace.registerButtonCallback('MAKE_A_PROCEDURE', procButtonCallback);
 		document.addEventListener('click', this.handleClick);
 		document.addEventListener('touchend', this.handleClick);
-
+		
 		// Store the xml of the toolbox that is actually rendered.
 		// This is used in componentDidUpdate instead of prevProps, because
 		// the xml can change while e.g. on the costumes tab.
@@ -134,6 +132,8 @@ class Blocks extends React.Component {
 		this.workspace.setToolboxRefreshEnabled = () => {
 			this.setToolboxRefreshEnabled(false);
 		};
+
+		//this.workspace.isVisible_ = false;
 
 		// @todo change this when blockly supports UI events
 		addFunctionListener(this.workspace, 'translate', this.onWorkspaceMetricsChange);
@@ -159,10 +159,10 @@ class Blocks extends React.Component {
 		);
 	}
 	componentDidUpdate(prevProps) {
+		
 		// If any modals are open, call hideChaff to close z-indexed field editors
 		if (this.props.anyModalVisible && !prevProps.anyModalVisible) {
 			this.ScratchBlocks.hideChaff();
-
 		}
 
 		// Only rerender the toolbox when the blocks are visible and the xml is
@@ -195,7 +195,7 @@ class Blocks extends React.Component {
 			window.dispatchEvent(new Event('resize'));
 		} else {
 			this.workspace.setVisible(false);
-		}
+		}	
 	}
 	componentWillUnmount() {
 		document.removeEventListener('click', this.handleClick);
@@ -221,6 +221,7 @@ class Blocks extends React.Component {
 				this.withToolboxUpdates(() => {
 					this.workspace.getFlyout().setRecyclingEnabled(true);
 				});
+				
 			});
 	}
 
@@ -229,7 +230,6 @@ class Blocks extends React.Component {
 		this.toolboxUpdateTimeout = false;
 	
 		this.workspace.toolbox_.refreshSelection();
-
 		//alert("update" + this.workspace.getToolbox().getSelectedCategoryId());
 		const categoryId = this.workspace.toolbox_.getSelectedCategoryId();		
 		const offset = this.workspace.toolbox_.getCategoryScrollOffset();
@@ -414,13 +414,10 @@ class Blocks extends React.Component {
 			this.workspace.resize();
 		}
 
-
 		// Clear the undo state of the workspace since this is a
 		// fresh workspace and we don't want any changes made to another sprites
 		// workspace to be 'undone' here.
 		this.workspace.clearUndo();
-
-
 	}
 	handleMonitorsUpdate(monitors) {
 		// Update the checkboxes of the relevant monitors.

@@ -42,14 +42,18 @@ const BLOCKS_DEFAULT_SCALE = 0.675;
 
 const STAGE_DISPLAY_SCALES = {};
 STAGE_DISPLAY_SCALES[STAGE_DISPLAY_SIZES.large] = 1; // large mode, wide browser (standard)
-STAGE_DISPLAY_SCALES[STAGE_DISPLAY_SIZES.largeConstrained] = 0.85; // large mode but narrow browser
+STAGE_DISPLAY_SCALES[STAGE_DISPLAY_SIZES.largeConstrained] = 0.75; // large mode but narrow browser
 STAGE_DISPLAY_SCALES[STAGE_DISPLAY_SIZES.small] = 0.5; // small mode, regardless of browser size
+
+STAGE_DISPLAY_SCALES[STAGE_DISPLAY_SIZES.landscape] = 0.25;
 
 export default {
     standardStageWidth: 480,
     standardStageHeight: 360,
-    fullSizeMinWidth: 1096,
-    fullSizePaintMinWidth: 1250
+    //fullSizeMinWidth: 1096,
+    //fullSizePaintMinWidth: 1250,
+	fullSizeMinWidth: 1024,
+	fullSizePaintMinWidth: 320
 };
 
 export {

@@ -137,3 +137,47 @@
 .sprite-input {
     width: 8rem;
 }
+
+
+@media screen and (min-width: 600px) and (max-width:1023px)  {
+.larger-input input {
+    width: 2rem;
+}
+
+.sprite-input {
+    width: 4rem;
+}
+.sprite-info {
+    padding: 0rem;
+}
+.row-primary {
+    margin-bottom: 0.2rem;
+}
+
+.icon-wrapper {
+    display: inline-block;
+    width: calc(1.5rem + 2px);
+    height: calc(1.5rem + 2px);
+    padding: 0.1rem;
+}
+
+}
+
+@media screen and (max-width:599px)  {
+.larger-input input {
+    width: 3rem;
+}
+
+.sprite-input {
+    width: 4rem;
+}
+
+.sprite-info {
+    padding: 0.2rem;
+}
+
+.group {
+   margin: 0 0.1rem;
+}
+	
+}

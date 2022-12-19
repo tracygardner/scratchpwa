@@ -46,3 +46,21 @@
     text-overflow: clip;
     text-align: center;
 }
+
+
+@media screen and (max-width:1023px)  { 
+.input-form {
+    height: 1.5rem;
+    padding: 0 0.2rem;
+
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.65rem;
+	border-radius: 0.5rem;
+}
+
+.input-small {
+    width: 2rem;
+    padding: 0 0.2rem;
+}
+}
+

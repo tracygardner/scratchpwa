@@ -6,6 +6,7 @@ const initialState = {
     stageSize: STAGE_DISPLAY_SIZES.large
 };
 
+
 const reducer = function (state, action) {
     if (typeof state === 'undefined') state = initialState;
     switch (action.type) {
