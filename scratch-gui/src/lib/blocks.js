@@ -21,7 +21,7 @@ Blockly.Toolbox.prototype.scrollToCategoryByName = function(name) {
 	}
 	// end
 
-	console.log("name: ", id)
+	//console.log("name: ", id)
     //if(!id){ id = 'motion'}
 	var scrollPositions = this.flyout_.categoryScrollPositions;
 	for (var i = 0; i < scrollPositions.length; i++) {
@@ -40,7 +40,7 @@ Blockly.Toolbox.prototype.scrollToCategoryById = function(id) {
 		this.refreshSelection();
 	}
 	// end
-	console.log("id: ", id)
+	//console.log("id: ", id)
  
 	var scrollPositions = this.flyout_.categoryScrollPositions;
 	for (var i = 0; i < scrollPositions.length; i++) {

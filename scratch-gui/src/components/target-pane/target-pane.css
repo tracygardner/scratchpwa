@@ -30,6 +30,7 @@
 .stage-selector-wrapper {
     flex-basis: 48px;
     flex-shrink: 1;
+	min-height: 100px;
 }
 
 [dir="ltr"] .stage-selector-wrapper {
@@ -49,7 +50,7 @@
 
 .stage-selector-wrapper {
     flex-basis: 48px;
-    flex-shrink: 1
+    flex-shrink: 1;
 }
 
 [dir="ltr"] .stage-selector-wrapper {

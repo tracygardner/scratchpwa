@@ -136,6 +136,7 @@
 
 @media screen and (max-width: 1023px) { 
 .sprite-selector{
-	width: calc(100% - ($space * 2) - 48px)
+	width: calc(100% - ($space * 2) - 48px);
+	min-height: 100px;
 }
 }

@@ -81,7 +81,7 @@ const toggleKeyboard = function(hasKeyboard) {
 
 };
 const setFullScreen = function(isFullScreen) {
-	console.log("fullscreen:" + isFullScreen);
+	//console.log("fullscreen:" + isFullScreen);
 
 	var kbd = document.getElementById("fullscreen-keyboard");
 	if (isFullScreen) {
