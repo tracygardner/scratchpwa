@@ -1444,8 +1444,8 @@ module.exports = [
         entry: {
             'lib.min': ['react', 'react-dom'],
             'gui': './src/playground/index.jsx',
-            'blocksonly': './src/playground/blocks-only.jsx',
-            'compatibilitytesting': './src/playground/compatibility-testing.jsx',
+            /*'blocksonly': './src/playground/blocks-only.jsx',
+            'compatibilitytesting': './src/playground/compatibility-testing.jsx',*/
             'player': './src/playground/player.jsx'
         },
         output: {
@@ -1484,12 +1484,12 @@ module.exports = [
                 title: 'Scratch 3.0 GUI',
                 sentryConfig: process.env.SENTRY_CONFIG ? '"' + process.env.SENTRY_CONFIG + '"' : null
             }),
-            new HtmlWebpackPlugin({
+            /*new HtmlWebpackPlugin({
                 chunks: ['lib.min', 'blocksonly'],
                 template: 'src/playground/index.ejs',
                 filename: 'blocks-only.html',
                 title: 'Scratch 3.0 GUI: Blocks Only Example'
-            }),
+            }),*/
             new HtmlWebpackPlugin({
                 chunks: ['lib.min', 'compatibilitytesting'],
                 template: 'src/playground/index.ejs',

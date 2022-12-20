@@ -93,12 +93,6 @@ define(['./workbox-b5366f8b'], (function (workbox) { 'use strict';
     "url": "/scratchpwa/4f46f43b64af7fd567fc.worker.js",
     "revision": null
   }, {
-    "url": "/scratchpwa/chunks/blocksonly.js",
-    "revision": "95531038cfa411c4a9204d64f40f04bf"
-  }, {
-    "url": "/scratchpwa/chunks/compatibilitytesting.js",
-    "revision": "88a0a09aaf2467ab6f8219e73116f9b6"
-  }, {
     "url": "/scratchpwa/chunks/gui.js",
     "revision": "04e3d53e2ea93c5717e86c353d09f103"
   }, {
@@ -109,7 +103,7 @@ define(['./workbox-b5366f8b'], (function (workbox) { 'use strict';
     "revision": "9a1b34c26f76fa70ab749076656c9454"
   }, {
     "url": "/scratchpwa/lib.min.js",
-    "revision": "f4576fbc1447ce04ec6dac52e64a0613"
+    "revision": "17ff3e2e474fb262bc084804c28cbb94"
   }, {
     "url": "/scratchpwa/static/assets/02d927ce93445be737c7ff43fb98b135.svg",
     "revision": null

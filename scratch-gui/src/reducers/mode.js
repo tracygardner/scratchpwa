@@ -54,7 +54,7 @@ const toggleMenuBar = function(showMenuBar) {
 	}
 
 	window.dispatchEvent(new Event('resize'));
-	
+
 	return {
 		type: SET_MENUBAR,
 		showMenuBar: showMenuBar
@@ -70,20 +70,28 @@ const toggleKeyboard = function(hasKeyboard) {
 	} else {
 		vis.style.display = "none";
 	}
+
+	window.dispatchEvent(new Event('resize'));
+
 	return {
 		type: SET_KEYBOARD,
 		hasKeyboard: hasKeyboard
 	}
+
+
 };
 const setFullScreen = function(isFullScreen) {
 	console.log("fullscreen:" + isFullScreen);
 
 	var kbd = document.getElementById("fullscreen-keyboard");
-	if (isFullScreen){
+	if (isFullScreen) {
 		kbd.style.display = "block";
 	} else {
 		kbd.style.display = "none";
 	}
+
+	window.dispatchEvent(new Event('resize'));
+
 	return {
 		type: SET_FULL_SCREEN,
 		isFullScreen: isFullScreen
