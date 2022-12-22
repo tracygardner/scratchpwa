@@ -7,6 +7,14 @@
         "version": 751,
         "index": 800
       }
+    ],
+    "scratch-gui/src/lib/blocks.js": [
+      {
+        "id": "e057e228-c678-49f4-b2b7-22bc325444b4",
+        "line": 170,
+        "version": 1331,
+        "index": 4798
+      }
     ]
   }
 }

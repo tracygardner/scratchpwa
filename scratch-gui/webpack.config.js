@@ -1490,12 +1490,12 @@ module.exports = [
                 filename: 'blocks-only.html',
                 title: 'Scratch 3.0 GUI: Blocks Only Example'
             }),*/
-            new HtmlWebpackPlugin({
+            /*new HtmlWebpackPlugin({
                 chunks: ['lib.min', 'compatibilitytesting'],
                 template: 'src/playground/index.ejs',
                 filename: 'compatibility-testing.html',
                 title: 'Scratch 3.0 GUI: Compatibility Testing'
-            }),
+            }),*/
             new HtmlWebpackPlugin({
                 chunks: ['lib.min', 'player'],
                 template: 'src/playground/index.ejs',

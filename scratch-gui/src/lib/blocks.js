@@ -3,63 +3,10 @@ import ScratchBlocks from 'scratch-blocks';
 // Added code from https://github.com/LLK/scratch-blocks/issues/1778
 import Blockly from 'scratch-blocks';
 
-Blockly.Toolbox.prototype.getSelectedCategoryId = function() {
-
-  if(this.getSelectedItem()){
-  	return this.getSelectedItem().id_;
-  }
-  else {
-	  //alert("no id");
-	  return ''
-  }
-};
-
-Blockly.Toolbox.prototype.scrollToCategoryByName = function(name) {
-	// start 
-	if (!this.flyout_.isVisible_) {
-		this.refreshSelection();
-	}
-	// end
-
-	//console.log("name: ", id)
-    //if(!id){ id = 'motion'}
-	var scrollPositions = this.flyout_.categoryScrollPositions;
-	for (var i = 0; i < scrollPositions.length; i++) {
-		if (name === scrollPositions[i].categoryName) {
-			this.flyout_.scrollTo(scrollPositions[i].position);
-			this.flyout_.setVisible(true);
-			return;
-		}
-	}
-};
-
-Blockly.Toolbox.prototype.scrollToCategoryById = function(id) {
-
-	// start 
-	if (!this.flyout_.isVisible_) {
-		this.refreshSelection();
-	}
-	// end
-	//console.log("id: ", id)
- 
-	var scrollPositions = this.flyout_.categoryScrollPositions;
-	for (var i = 0; i < scrollPositions.length; i++) {
-		if (id === scrollPositions[i].categoryId) {
-			this.flyout_.scrollTo(scrollPositions[i].position);
-			this.flyout_.setVisible(true);			
-			return;
-		}
-	}
-};
-
 // Horrible hack based on https://github.com/LLK/scratch-blocks/issues/1067
 Blockly.VerticalFlyout.prototype.autoClose = true;
 
 Blockly.Flyout.prototype.scrollAnimationFraction = 1.0; // no animation
-
-Blockly.Toolbox.prototype.setWidth = function(width) {
-	this.width = width;
-};
 
 Blockly.WorkspaceSvg.getTopLevelWorkspaceMetrics_ = function() {
 
@@ -121,6 +68,148 @@ Blockly.WorkspaceSvg.getTopLevelWorkspaceMetrics_ = function() {
 	return metrics;
 };
 
+Blockly.Toolbox.prototype.getSelectedCategoryId = function() {
+
+  if (!this.flyout_.isVisible_) {
+		this.refreshSelection();
+  }
+
+  if(this.getSelectedItem()){
+  	return this.getSelectedItem().id_;
+  }
+  else {
+	  //alert("no id");
+	  return ''
+  }
+};
+
+Blockly.Toolbox.prototype.scrollToCategoryByName = function(name) {
+	// start 
+	if (!this.flyout_.isVisible_) {
+		this.refreshSelection();
+	}
+	// end
+
+	var scrollPositions = this.flyout_.categoryScrollPositions;
+	for (var i = 0; i < scrollPositions.length; i++) {
+		if (name === scrollPositions[i].categoryName) {
+			this.flyout_.scrollTo(scrollPositions[i].position);
+			this.flyout_.setVisible(true);
+			return;
+		}
+	}
+};
+
+Blockly.Toolbox.prototype.scrollToCategoryById = function(id) {
+
+	// start 
+	if (!this.flyout_.isVisible_) {
+		this.refreshSelection();
+	}
+	// end
+ 
+	var scrollPositions = this.flyout_.categoryScrollPositions;
+	for (var i = 0; i < scrollPositions.length; i++) {
+		if (id === scrollPositions[i].categoryId) {
+			this.flyout_.scrollTo(scrollPositions[i].position);
+			this.flyout_.setVisible(true);			
+			return;
+		}
+	}
+};
+
+Blockly.Toolbox.prototype.selectCategoryById = function(id) {
+
+   	// start 
+	if (!this.flyout_.isVisible_) {
+		this.refreshSelection();
+	}
+	// end
+
+  //console.log("id: " + id);
+	
+  for (var i = 0; i < this.categoryMenu_.categories_.length; i++) {
+    var category = this.categoryMenu_.categories_[i];
+    if (id === category.id_) {
+		if(this.selectedItem_)
+		{
+      		this.selectedItem_.setSelected(false);
+      		this.selectedItem_ = category;
+      		this.selectedItem_.setSelected(true);
+		}
+    }
+  }
+};
+
+Blockly.Toolbox.Category.prototype.setSelected = function(selected) {
+
+  //console.log("Selected: " + selected)
+	
+  this.item_.className = this.getMenuItemClassName_(selected);
+};
+
+Blockly.VerticalFlyout.prototype.selectCategoryByScrollPosition = function(pos) {
+    // start 
+	if (!this.isVisible_) {
+		this.parentToolbox_.refreshSelection();
+	}
+	// end
+	
+	// If we are currently auto-scrolling, due to selecting a category by clicking on it,
+  // do not update the category selection.
+  if (this.scrollTarget) {
+    return;
+  }
+  var workspacePos = Math.round(pos / this.workspace_.scale);
+  // Traverse the array of scroll positions in reverse, so we can select the furthest
+  // category that the scroll position is beyond.
+  for (var i = this.categoryScrollPositions.length - 1; i >= 0; i--) {
+    if (workspacePos >= this.categoryScrollPositions[i].position) {
+      this.parentToolbox_.selectCategoryById(this.categoryScrollPositions[i].categoryId);
+      return;
+    }
+  }
+};
+
+Blockly.Toolbox.prototype.setWidth = function(width) {
+  this.width = width;
+};
+
+Blockly.Flyout.prototype.setVisible = function(visible) {
+  var visibilityChanged = (visible != this.isVisible());
+
+  this.isVisible_ = visible;
+
+  if (visibilityChanged) {
+    this.updateDisplay_();
+	//console.log("flyout visibility changed");
+	this.parentToolbox_.workspace_.recordCachedAreas();
+  }
+
+  if (this.isVisible_){
+  	this.parentToolbox_.setWidth(52 + this.getWidth());
+  }
+};
+
+Blockly.WorkspaceSvg.prototype.recordDeleteAreas_ = function() {
+  
+  if (this.trashcan) {
+    this.deleteAreaTrash_ = this.trashcan.getClientRect();
+   } else {
+    this.deleteAreaTrash_ = null;
+  }
+	
+  if (this.getFlyout() && this.getFlyout().isVisible()) {
+	//console.log("Flyout delete area")
+    this.deleteAreaToolbox_ = this.getFlyout().getClientRect();
+  } else if (this.toolbox_) {
+	//console.log("Toolbox delete area")
+    this.deleteAreaToolbox_ = this.toolbox_.getClientRect();
+  } else {
+	//console.log("No delete area")
+    this.deleteAreaToolbox_ = null;
+  }
+};
 
 /**
  * Connect scratch blocks with the vm
