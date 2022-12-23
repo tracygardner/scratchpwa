@@ -1,6 +1,6 @@
 {
   "name": "Scratch offline",
-  "display": "standalone",
+  "display": "fullscreen",
   "start_url": "/scratchpwa/",
   "scope": "/scratchpwa/",
   "short_name": "Scratch offline",

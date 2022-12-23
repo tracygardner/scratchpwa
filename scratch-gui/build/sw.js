@@ -847,7 +847,7 @@ define(['./workbox-b5366f8b'], (function (workbox) { 'use strict';
     "revision": "7383290bf283286cc7bf34b753b47683"
   }, {
     "url": "/scratchpwa/static/manifest.json",
-    "revision": "0587fa81214e0ea5302dd3a7c7dc4f52"
+    "revision": "97efc610c2ba5adbeb7344a54e538824"
   }, {
     "url": "/scratchpwa/static/maskable_icon.png",
     "revision": "5eba82c820a3e129fbbed93e783e987f"
