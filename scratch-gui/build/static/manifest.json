@@ -1,7 +1,7 @@
 {
   "name": "Scratch offline",
   "display": "fullscreen",
-  "start_url": "/scratchpwa/",
+  "start_url": "/scratchpwa/?fullscreen=true",
   "scope": "/scratchpwa/",
   "short_name": "Scratch offline",
   "theme_color": "#e30b5d",

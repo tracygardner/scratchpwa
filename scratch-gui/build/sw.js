@@ -91,7 +91,7 @@ define(['./workbox-b5366f8b'], (function (workbox) { 'use strict';
 
   workbox.precacheAndRoute([{
     "url": "/scratchpwa/chunks/gui.js",
-    "revision": "aef3571a9fa9d83ec5f4d643bdead2e9"
+    "revision": "6aad2de4da1c91d46757c2d9b0f3efae"
   }, {
     "url": "/scratchpwa/chunks/player.js",
     "revision": "52ee6d7a78288e8201d8b50f051763d1"
@@ -103,7 +103,7 @@ define(['./workbox-b5366f8b'], (function (workbox) { 'use strict';
     "revision": "68441247b699d4f567ec4817a7e34bc6"
   }, {
     "url": "/scratchpwa/lib.min.js",
-    "revision": "50afe19df0707f302fe642438d9a23e8"
+    "revision": "33875cb1db49e1ff658b034535baaadd"
   }, {
     "url": "/scratchpwa/static/assets/02d927ce93445be737c7ff43fb98b135.svg",
     "revision": null
@@ -847,7 +847,7 @@ define(['./workbox-b5366f8b'], (function (workbox) { 'use strict';
     "revision": "7383290bf283286cc7bf34b753b47683"
   }, {
     "url": "/scratchpwa/static/manifest.json",
-    "revision": "97efc610c2ba5adbeb7344a54e538824"
+    "revision": "a4aa4bd75b3e3e2b67da52510440c39c"
   }, {
     "url": "/scratchpwa/static/maskable_icon.png",
     "revision": "5eba82c820a3e129fbbed93e783e987f"

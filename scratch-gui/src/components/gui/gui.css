@@ -336,6 +336,11 @@ $fade-out-distance: 15px;
 /* Landscape orientation */
 @media screen and (min-width: 600px) and (max-width:1023px)  { 
 
+.page-wrapper {
+	width: 100vw;
+    height: 100vh;
+}
+
 .editor-wrapper { 
 	flex-basis: calc(100vw - 320px - (($space + $stage-standard-border-width) * 2)));
 	
