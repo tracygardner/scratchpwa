@@ -51,6 +51,7 @@ const getStageDimensions = (stageSize, isFullScreen) => {
     };
 
     if (isFullScreen) {
+
         stageDimensions.height = window.innerHeight -
             STAGE_DIMENSION_DEFAULTS.menuHeightAdjustment -
             STAGE_DIMENSION_DEFAULTS.fullScreenSpacingBorderAdjustment;
@@ -59,6 +60,11 @@ const getStageDimensions = (stageSize, isFullScreen) => {
 
         if (stageDimensions.width > window.innerWidth) {
             stageDimensions.width = window.innerWidth;
+            stageDimensions.height = stageDimensions.width * .75;
+        }
+		// Handle mobile portrait layout
+		if (stageDimensions.width >= screen.width) {
+            stageDimensions.width = screen.width - STAGE_DIMENSION_DEFAULTS.fullScreenSpacingBorderAdjustment;
             stageDimensions.height = stageDimensions.width * .75;
         }
 

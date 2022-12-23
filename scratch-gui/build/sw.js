@@ -90,20 +90,20 @@ define(['./workbox-b5366f8b'], (function (workbox) { 'use strict';
    */
 
   workbox.precacheAndRoute([{
-    "url": "/scratchpwa/4f46f43b64af7fd567fc.worker.js",
-    "revision": null
-  }, {
     "url": "/scratchpwa/chunks/gui.js",
-    "revision": "04e3d53e2ea93c5717e86c353d09f103"
+    "revision": "aef3571a9fa9d83ec5f4d643bdead2e9"
   }, {
     "url": "/scratchpwa/chunks/player.js",
-    "revision": "3eec3650ebbdbeb7b89eca33def8c97c"
+    "revision": "52ee6d7a78288e8201d8b50f051763d1"
+  }, {
+    "url": "/scratchpwa/d094c4539989811b9208.worker.js",
+    "revision": null
   }, {
     "url": "/scratchpwa/extension-worker.js",
-    "revision": "9a1b34c26f76fa70ab749076656c9454"
+    "revision": "68441247b699d4f567ec4817a7e34bc6"
   }, {
     "url": "/scratchpwa/lib.min.js",
-    "revision": "2cf16ef7f7920796268bf4fbd0696d62"
+    "revision": "50afe19df0707f302fe642438d9a23e8"
   }, {
     "url": "/scratchpwa/static/assets/02d927ce93445be737c7ff43fb98b135.svg",
     "revision": null

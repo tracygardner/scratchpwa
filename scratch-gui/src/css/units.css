@@ -33,10 +33,7 @@ $menu-bar-item-max-width: 12rem;
 @media screen and (orientation: portrait) {
 $full-size: 200vw;
 }
-/* Landscape orientation */
-/*@media screen and (orientation: landscape) {
-$full-size: 100vw;
-}*/
+
 
 @media screen and (max-width: 1023){
 	$space: 0.2rem;

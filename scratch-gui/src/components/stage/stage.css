@@ -155,13 +155,6 @@ stage doesn't "spill" out from under its rounded corners. instead, shift these o
 }
 
 
-@media screen and (max-width: 1023px) { 
-
-.stage.full-screen {
-	width: 96vw;
-}
-}
-
 @media screen and (min-width: 600px) and (max-width:1023px)  { 
 
 .stage.full-screen {

@@ -18,7 +18,8 @@ const STATIC_PATH = process.env.STATIC_PATH || '/static';
 
 const base = {
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
-    devtool: 'cheap-module-source-map',
+    /*devtool: 'cheap-module-source-map',*/
+	
     devServer: {
         contentBase: path.resolve(__dirname, 'build'),
         host: '0.0.0.0',
@@ -87,6 +88,7 @@ const base = {
     optimization: {
         minimizer: [
             new UglifyJsPlugin({
+				sourceMap : false, /* reduce size */
                 include: /\.min\.js$/
             })
         ]

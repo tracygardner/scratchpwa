@@ -93,98 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-/* eslint-env worker */
-var ArgumentType = __webpack_require__(/*! ../extension-support/argument-type */ "./node_modules/scratch-vm/src/extension-support/argument-type.js");
-
-var BlockType = __webpack_require__(/*! ../extension-support/block-type */ "./node_modules/scratch-vm/src/extension-support/block-type.js");
-
-var dispatch = __webpack_require__(/*! ../dispatch/worker-dispatch */ "./node_modules/scratch-vm/src/dispatch/worker-dispatch.js");
-
-var TargetType = __webpack_require__(/*! ../extension-support/target-type */ "./node_modules/scratch-vm/src/extension-support/target-type.js");
-
-var ExtensionWorker = /*#__PURE__*/function () {
-  function ExtensionWorker() {
-    var _this = this;
-
-    _classCallCheck(this, ExtensionWorker);
-
-    this.nextExtensionId = 0;
-    this.initialRegistrations = [];
-    dispatch.waitForConnection.then(function () {
-      dispatch.call('extensions', 'allocateWorker').then(function (x) {
-        var _x = _slicedToArray(x, 2),
-            id = _x[0],
-            extension = _x[1];
-
-        _this.workerId = id;
-
-        try {
-          importScripts(extension);
-          var initialRegistrations = _this.initialRegistrations;
-          _this.initialRegistrations = null;
-          Promise.all(initialRegistrations).then(function () {
-            return dispatch.call('extensions', 'onWorkerInit', id);
-          });
-        } catch (e) {
-          dispatch.call('extensions', 'onWorkerInit', id, e);
-        }
-      });
-    });
-    this.extensions = [];
-  }
-
-  _createClass(ExtensionWorker, [{
-    key: "register",
-    value: function register(extensionObject) {
-      var extensionId = this.nextExtensionId++;
-      this.extensions.push(extensionObject);
-      var serviceName = "extension.".concat(this.workerId, ".").concat(extensionId);
-      var promise = dispatch.setService(serviceName, extensionObject).then(function () {
-        return dispatch.call('extensions', 'registerExtensionService', serviceName);
-      });
-
-      if (this.initialRegistrations) {
-        this.initialRegistrations.push(promise);
-      }
-
-      return promise;
-    }
-  }]);
-
-  return ExtensionWorker;
-}();
-
-global.Scratch = global.Scratch || {};
-global.Scratch.ArgumentType = ArgumentType;
-global.Scratch.BlockType = BlockType;
-global.Scratch.TargetType = TargetType;
-/**
- * Expose only specific parts of the worker to extensions.
- */
-
-var extensionWorker = new ExtensionWorker();
-global.Scratch.extensions = {
-  register: extensionWorker.register.bind(extensionWorker)
-};
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+eval("/* WEBPACK VAR INJECTION */(function(global) {function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }\n\nfunction _nonIterableRest() { throw new TypeError(\"Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.\"); }\n\nfunction _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === \"string\") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === \"Object\" && o.constructor) n = o.constructor.name; if (n === \"Map\" || n === \"Set\") return Array.from(o); if (n === \"Arguments\" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }\n\nfunction _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }\n\nfunction _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== \"undefined\" && arr[Symbol.iterator] || arr[\"@@iterator\"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i[\"return\"] != null) _i[\"return\"](); } finally { if (_d) throw _e; } } return _arr; }\n\nfunction _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\n/* eslint-env worker */\nvar ArgumentType = __webpack_require__(/*! ../extension-support/argument-type */ \"./node_modules/scratch-vm/src/extension-support/argument-type.js\");\n\nvar BlockType = __webpack_require__(/*! ../extension-support/block-type */ \"./node_modules/scratch-vm/src/extension-support/block-type.js\");\n\nvar dispatch = __webpack_require__(/*! ../dispatch/worker-dispatch */ \"./node_modules/scratch-vm/src/dispatch/worker-dispatch.js\");\n\nvar TargetType = __webpack_require__(/*! ../extension-support/target-type */ \"./node_modules/scratch-vm/src/extension-support/target-type.js\");\n\nvar ExtensionWorker = /*#__PURE__*/function () {\n  function ExtensionWorker() {\n    var _this = this;\n\n    _classCallCheck(this, ExtensionWorker);\n\n    this.nextExtensionId = 0;\n    this.initialRegistrations = [];\n    dispatch.waitForConnection.then(function () {\n      dispatch.call('extensions', 'allocateWorker').then(function (x) {\n        var _x = _slicedToArray(x, 2),\n            id = _x[0],\n            extension = _x[1];\n\n        _this.workerId = id;\n\n        try {\n          importScripts(extension);\n          var initialRegistrations = _this.initialRegistrations;\n          _this.initialRegistrations = null;\n          Promise.all(initialRegistrations).then(function () {\n            return dispatch.call('extensions', 'onWorkerInit', id);\n          });\n        } catch (e) {\n          dispatch.call('extensions', 'onWorkerInit', id, e);\n        }\n      });\n    });\n    this.extensions = [];\n  }\n\n  _createClass(ExtensionWorker, [{\n    key: \"register\",\n    value: function register(extensionObject) {\n      var extensionId = this.nextExtensionId++;\n      this.extensions.push(extensionObject);\n      var serviceName = \"extension.\".concat(this.workerId, \".\").concat(extensionId);\n      var promise = dispatch.setService(serviceName, extensionObject).then(function () {\n        return dispatch.call('extensions', 'registerExtensionService', serviceName);\n      });\n\n      if (this.initialRegistrations) {\n        this.initialRegistrations.push(promise);\n      }\n\n      return promise;\n    }\n  }]);\n\n  return ExtensionWorker;\n}();\n\nglobal.Scratch = global.Scratch || {};\nglobal.Scratch.ArgumentType = ArgumentType;\nglobal.Scratch.BlockType = BlockType;\nglobal.Scratch.TargetType = TargetType;\n/**\n * Expose only specific parts of the worker to extensions.\n */\n\nvar extensionWorker = new ExtensionWorker();\nglobal.Scratch.extensions = {\n  register: extensionWorker.register.bind(extensionWorker)\n};\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ \"./node_modules/webpack/buildin/global.js\")))\n\n//# sourceURL=webpack://GUI/./node_modules/scratch-vm/src/extension-support/extension-worker.js?./node_modules/babel-loader/lib??ref--4");
 
 /***/ }),
 
@@ -195,57 +104,7 @@ global.Scratch.extensions = {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-function M() { this._events = {}; }
-M.prototype = {
-  on: function(ev, cb) {
-    this._events || (this._events = {});
-    var e = this._events;
-    (e[ev] || (e[ev] = [])).push(cb);
-    return this;
-  },
-  removeListener: function(ev, cb) {
-    var e = this._events[ev] || [], i;
-    for(i = e.length-1; i >= 0 && e[i]; i--){
-      if(e[i] === cb || e[i].cb === cb) { e.splice(i, 1); }
-    }
-  },
-  removeAllListeners: function(ev) {
-    if(!ev) { this._events = {}; }
-    else { this._events[ev] && (this._events[ev] = []); }
-  },
-  listeners: function(ev) {
-    return (this._events ? this._events[ev] || [] : []);
-  },
-  emit: function(ev) {
-    this._events || (this._events = {});
-    var args = Array.prototype.slice.call(arguments, 1), i, e = this._events[ev] || [];
-    for(i = e.length-1; i >= 0 && e[i]; i--){
-      e[i].apply(this, args);
-    }
-    return this;
-  },
-  when: function(ev, cb) {
-    return this.once(ev, cb, true);
-  },
-  once: function(ev, cb, when) {
-    if(!cb) return this;
-    function c() {
-      if(!when) this.removeListener(ev, c);
-      if(cb.apply(this, arguments) && when) this.removeListener(ev, c);
-    }
-    c.cb = cb;
-    this.on(ev, c);
-    return this;
-  }
-};
-M.mixin = function(dest) {
-  var o = M.prototype, k;
-  for (k in o) {
-    o.hasOwnProperty(k) && (dest.prototype[k] = o[k]);
-  }
-};
-module.exports = M;
-
+eval("function M() { this._events = {}; }\nM.prototype = {\n  on: function(ev, cb) {\n    this._events || (this._events = {});\n    var e = this._events;\n    (e[ev] || (e[ev] = [])).push(cb);\n    return this;\n  },\n  removeListener: function(ev, cb) {\n    var e = this._events[ev] || [], i;\n    for(i = e.length-1; i >= 0 && e[i]; i--){\n      if(e[i] === cb || e[i].cb === cb) { e.splice(i, 1); }\n    }\n  },\n  removeAllListeners: function(ev) {\n    if(!ev) { this._events = {}; }\n    else { this._events[ev] && (this._events[ev] = []); }\n  },\n  listeners: function(ev) {\n    return (this._events ? this._events[ev] || [] : []);\n  },\n  emit: function(ev) {\n    this._events || (this._events = {});\n    var args = Array.prototype.slice.call(arguments, 1), i, e = this._events[ev] || [];\n    for(i = e.length-1; i >= 0 && e[i]; i--){\n      e[i].apply(this, args);\n    }\n    return this;\n  },\n  when: function(ev, cb) {\n    return this.once(ev, cb, true);\n  },\n  once: function(ev, cb, when) {\n    if(!cb) return this;\n    function c() {\n      if(!when) this.removeListener(ev, c);\n      if(cb.apply(this, arguments) && when) this.removeListener(ev, c);\n    }\n    c.cb = cb;\n    this.on(ev, c);\n    return this;\n  }\n};\nM.mixin = function(dest) {\n  var o = M.prototype, k;\n  for (k in o) {\n    o.hasOwnProperty(k) && (dest.prototype[k] = o[k]);\n  }\n};\nmodule.exports = M;\n\n\n//# sourceURL=webpack://GUI/./node_modules/microee/index.js?");
 
 /***/ }),
 
@@ -256,63 +115,7 @@ module.exports = M;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-// default filter
-var Transform = __webpack_require__(/*! ./transform.js */ "./node_modules/minilog/lib/common/transform.js");
-
-var levelMap = { debug: 1, info: 2, warn: 3, error: 4 };
-
-function Filter() {
-  this.enabled = true;
-  this.defaultResult = true;
-  this.clear();
-}
-
-Transform.mixin(Filter);
-
-// allow all matching, with level >= given level
-Filter.prototype.allow = function(name, level) {
-  this._white.push({ n: name, l: levelMap[level] });
-  return this;
-};
-
-// deny all matching, with level <= given level
-Filter.prototype.deny = function(name, level) {
-  this._black.push({ n: name, l: levelMap[level] });
-  return this;
-};
-
-Filter.prototype.clear = function() {
-  this._white = [];
-  this._black = [];
-  return this;
-};
-
-function test(rule, name) {
-  // use .test for RegExps
-  return (rule.n.test ? rule.n.test(name) : rule.n == name);
-};
-
-Filter.prototype.test = function(name, level) {
-  var i, len = Math.max(this._white.length, this._black.length);
-  for(i = 0; i < len; i++) {
-    if(this._white[i] && test(this._white[i], name) && levelMap[level] >= this._white[i].l) {
-      return true;
-    }
-    if(this._black[i] && test(this._black[i], name) && levelMap[level] <= this._black[i].l) {
-      return false;
-    }
-  }
-  return this.defaultResult;
-};
-
-Filter.prototype.write = function(name, level, args) {
-  if(!this.enabled || this.test(name, level)) {
-    return this.emit('item', name, level, args);
-  }
-};
-
-module.exports = Filter;
-
+eval("// default filter\nvar Transform = __webpack_require__(/*! ./transform.js */ \"./node_modules/minilog/lib/common/transform.js\");\n\nvar levelMap = { debug: 1, info: 2, warn: 3, error: 4 };\n\nfunction Filter() {\n  this.enabled = true;\n  this.defaultResult = true;\n  this.clear();\n}\n\nTransform.mixin(Filter);\n\n// allow all matching, with level >= given level\nFilter.prototype.allow = function(name, level) {\n  this._white.push({ n: name, l: levelMap[level] });\n  return this;\n};\n\n// deny all matching, with level <= given level\nFilter.prototype.deny = function(name, level) {\n  this._black.push({ n: name, l: levelMap[level] });\n  return this;\n};\n\nFilter.prototype.clear = function() {\n  this._white = [];\n  this._black = [];\n  return this;\n};\n\nfunction test(rule, name) {\n  // use .test for RegExps\n  return (rule.n.test ? rule.n.test(name) : rule.n == name);\n};\n\nFilter.prototype.test = function(name, level) {\n  var i, len = Math.max(this._white.length, this._black.length);\n  for(i = 0; i < len; i++) {\n    if(this._white[i] && test(this._white[i], name) && levelMap[level] >= this._white[i].l) {\n      return true;\n    }\n    if(this._black[i] && test(this._black[i], name) && levelMap[level] <= this._black[i].l) {\n      return false;\n    }\n  }\n  return this.defaultResult;\n};\n\nFilter.prototype.write = function(name, level, args) {\n  if(!this.enabled || this.test(name, level)) {\n    return this.emit('item', name, level, args);\n  }\n};\n\nmodule.exports = Filter;\n\n\n//# sourceURL=webpack://GUI/./node_modules/minilog/lib/common/filter.js?");
 
 /***/ }),
 
@@ -323,52 +126,7 @@ module.exports = Filter;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Transform = __webpack_require__(/*! ./transform.js */ "./node_modules/minilog/lib/common/transform.js"),
-    Filter = __webpack_require__(/*! ./filter.js */ "./node_modules/minilog/lib/common/filter.js");
-
-var log = new Transform(),
-    slice = Array.prototype.slice;
-
-exports = module.exports = function create(name) {
-  var o   = function() { log.write(name, undefined, slice.call(arguments)); return o; };
-  o.debug = function() { log.write(name, 'debug', slice.call(arguments)); return o; };
-  o.info  = function() { log.write(name, 'info',  slice.call(arguments)); return o; };
-  o.warn  = function() { log.write(name, 'warn',  slice.call(arguments)); return o; };
-  o.error = function() { log.write(name, 'error', slice.call(arguments)); return o; };
-  o.log   = o.debug; // for interface compliance with Node and browser consoles
-  o.suggest = exports.suggest;
-  o.format = log.format;
-  return o;
-};
-
-// filled in separately
-exports.defaultBackend = exports.defaultFormatter = null;
-
-exports.pipe = function(dest) {
-  return log.pipe(dest);
-};
-
-exports.end = exports.unpipe = exports.disable = function(from) {
-  return log.unpipe(from);
-};
-
-exports.Transform = Transform;
-exports.Filter = Filter;
-// this is the default filter that's applied when .enable() is called normally
-// you can bypass it completely and set up your own pipes
-exports.suggest = new Filter();
-
-exports.enable = function() {
-  if(exports.defaultFormatter) {
-    return log.pipe(exports.suggest) // filter
-              .pipe(exports.defaultFormatter) // formatter
-              .pipe(exports.defaultBackend); // backend
-  }
-  return log.pipe(exports.suggest) // filter
-            .pipe(exports.defaultBackend); // formatter
-};
-
-
+eval("var Transform = __webpack_require__(/*! ./transform.js */ \"./node_modules/minilog/lib/common/transform.js\"),\n    Filter = __webpack_require__(/*! ./filter.js */ \"./node_modules/minilog/lib/common/filter.js\");\n\nvar log = new Transform(),\n    slice = Array.prototype.slice;\n\nexports = module.exports = function create(name) {\n  var o   = function() { log.write(name, undefined, slice.call(arguments)); return o; };\n  o.debug = function() { log.write(name, 'debug', slice.call(arguments)); return o; };\n  o.info  = function() { log.write(name, 'info',  slice.call(arguments)); return o; };\n  o.warn  = function() { log.write(name, 'warn',  slice.call(arguments)); return o; };\n  o.error = function() { log.write(name, 'error', slice.call(arguments)); return o; };\n  o.log   = o.debug; // for interface compliance with Node and browser consoles\n  o.suggest = exports.suggest;\n  o.format = log.format;\n  return o;\n};\n\n// filled in separately\nexports.defaultBackend = exports.defaultFormatter = null;\n\nexports.pipe = function(dest) {\n  return log.pipe(dest);\n};\n\nexports.end = exports.unpipe = exports.disable = function(from) {\n  return log.unpipe(from);\n};\n\nexports.Transform = Transform;\nexports.Filter = Filter;\n// this is the default filter that's applied when .enable() is called normally\n// you can bypass it completely and set up your own pipes\nexports.suggest = new Filter();\n\nexports.enable = function() {\n  if(exports.defaultFormatter) {\n    return log.pipe(exports.suggest) // filter\n              .pipe(exports.defaultFormatter) // formatter\n              .pipe(exports.defaultBackend); // backend\n  }\n  return log.pipe(exports.suggest) // filter\n            .pipe(exports.defaultBackend); // formatter\n};\n\n\n\n//# sourceURL=webpack://GUI/./node_modules/minilog/lib/common/minilog.js?");
 
 /***/ }),
 
@@ -379,79 +137,7 @@ exports.enable = function() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var microee = __webpack_require__(/*! microee */ "./node_modules/microee/index.js");
-
-// Implements a subset of Node's stream.Transform - in a cross-platform manner.
-function Transform() {}
-
-microee.mixin(Transform);
-
-// The write() signature is different from Node's
-// --> makes it much easier to work with objects in logs.
-// One of the lessons from v1 was that it's better to target
-// a good browser rather than the lowest common denominator
-// internally.
-// If you want to use external streams, pipe() to ./stringify.js first.
-Transform.prototype.write = function(name, level, args) {
-  this.emit('item', name, level, args);
-};
-
-Transform.prototype.end = function() {
-  this.emit('end');
-  this.removeAllListeners();
-};
-
-Transform.prototype.pipe = function(dest) {
-  var s = this;
-  // prevent double piping
-  s.emit('unpipe', dest);
-  // tell the dest that it's being piped to
-  dest.emit('pipe', s);
-
-  function onItem() {
-    dest.write.apply(dest, Array.prototype.slice.call(arguments));
-  }
-  function onEnd() { !dest._isStdio && dest.end(); }
-
-  s.on('item', onItem);
-  s.on('end', onEnd);
-
-  s.when('unpipe', function(from) {
-    var match = (from === dest) || typeof from == 'undefined';
-    if(match) {
-      s.removeListener('item', onItem);
-      s.removeListener('end', onEnd);
-      dest.emit('unpipe');
-    }
-    return match;
-  });
-
-  return dest;
-};
-
-Transform.prototype.unpipe = function(from) {
-  this.emit('unpipe', from);
-  return this;
-};
-
-Transform.prototype.format = function(dest) {
-  throw new Error([
-    'Warning: .format() is deprecated in Minilog v2! Use .pipe() instead. For example:',
-    'var Minilog = require(\'minilog\');',
-    'Minilog',
-    '  .pipe(Minilog.backends.console.formatClean)',
-    '  .pipe(Minilog.backends.console);'].join('\n'));
-};
-
-Transform.mixin = function(dest) {
-  var o = Transform.prototype, k;
-  for (k in o) {
-    o.hasOwnProperty(k) && (dest.prototype[k] = o[k]);
-  }
-};
-
-module.exports = Transform;
-
+eval("var microee = __webpack_require__(/*! microee */ \"./node_modules/microee/index.js\");\n\n// Implements a subset of Node's stream.Transform - in a cross-platform manner.\nfunction Transform() {}\n\nmicroee.mixin(Transform);\n\n// The write() signature is different from Node's\n// --> makes it much easier to work with objects in logs.\n// One of the lessons from v1 was that it's better to target\n// a good browser rather than the lowest common denominator\n// internally.\n// If you want to use external streams, pipe() to ./stringify.js first.\nTransform.prototype.write = function(name, level, args) {\n  this.emit('item', name, level, args);\n};\n\nTransform.prototype.end = function() {\n  this.emit('end');\n  this.removeAllListeners();\n};\n\nTransform.prototype.pipe = function(dest) {\n  var s = this;\n  // prevent double piping\n  s.emit('unpipe', dest);\n  // tell the dest that it's being piped to\n  dest.emit('pipe', s);\n\n  function onItem() {\n    dest.write.apply(dest, Array.prototype.slice.call(arguments));\n  }\n  function onEnd() { !dest._isStdio && dest.end(); }\n\n  s.on('item', onItem);\n  s.on('end', onEnd);\n\n  s.when('unpipe', function(from) {\n    var match = (from === dest) || typeof from == 'undefined';\n    if(match) {\n      s.removeListener('item', onItem);\n      s.removeListener('end', onEnd);\n      dest.emit('unpipe');\n    }\n    return match;\n  });\n\n  return dest;\n};\n\nTransform.prototype.unpipe = function(from) {\n  this.emit('unpipe', from);\n  return this;\n};\n\nTransform.prototype.format = function(dest) {\n  throw new Error([\n    'Warning: .format() is deprecated in Minilog v2! Use .pipe() instead. For example:',\n    'var Minilog = require(\\'minilog\\');',\n    'Minilog',\n    '  .pipe(Minilog.backends.console.formatClean)',\n    '  .pipe(Minilog.backends.console);'].join('\\n'));\n};\n\nTransform.mixin = function(dest) {\n  var o = Transform.prototype, k;\n  for (k in o) {\n    o.hasOwnProperty(k) && (dest.prototype[k] = o[k]);\n  }\n};\n\nmodule.exports = Transform;\n\n\n//# sourceURL=webpack://GUI/./node_modules/minilog/lib/common/transform.js?");
 
 /***/ }),
 
@@ -462,21 +148,7 @@ module.exports = Transform;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Transform = __webpack_require__(/*! ../common/transform.js */ "./node_modules/minilog/lib/common/transform.js"),
-    cache = [ ];
-
-var logger = new Transform();
-
-logger.write = function(name, level, args) {
-  cache.push([ name, level, args ]);
-};
-
-// utility functions
-logger.get = function() { return cache; };
-logger.empty = function() { cache = []; };
-
-module.exports = logger;
-
+eval("var Transform = __webpack_require__(/*! ../common/transform.js */ \"./node_modules/minilog/lib/common/transform.js\"),\n    cache = [ ];\n\nvar logger = new Transform();\n\nlogger.write = function(name, level, args) {\n  cache.push([ name, level, args ]);\n};\n\n// utility functions\nlogger.get = function() { return cache; };\nlogger.empty = function() { cache = []; };\n\nmodule.exports = logger;\n\n\n//# sourceURL=webpack://GUI/./node_modules/minilog/lib/web/array.js?");
 
 /***/ }),
 
@@ -487,39 +159,7 @@ module.exports = logger;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Transform = __webpack_require__(/*! ../common/transform.js */ "./node_modules/minilog/lib/common/transform.js");
-
-var newlines = /\n+$/,
-    logger = new Transform();
-
-logger.write = function(name, level, args) {
-  var i = args.length-1;
-  if (typeof console === 'undefined' || !console.log) {
-    return;
-  }
-  if(console.log.apply) {
-    return console.log.apply(console, [name, level].concat(args));
-  } else if(JSON && JSON.stringify) {
-    // console.log.apply is undefined in IE8 and IE9
-    // for IE8/9: make console.log at least a bit less awful
-    if(args[i] && typeof args[i] == 'string') {
-      args[i] = args[i].replace(newlines, '');
-    }
-    try {
-      for(i = 0; i < args.length; i++) {
-        args[i] = JSON.stringify(args[i]);
-      }
-    } catch(e) {}
-    console.log(args.join(' '));
-  }
-};
-
-logger.formatters = ['color', 'minilog'];
-logger.color = __webpack_require__(/*! ./formatters/color.js */ "./node_modules/minilog/lib/web/formatters/color.js");
-logger.minilog = __webpack_require__(/*! ./formatters/minilog.js */ "./node_modules/minilog/lib/web/formatters/minilog.js");
-
-module.exports = logger;
-
+eval("var Transform = __webpack_require__(/*! ../common/transform.js */ \"./node_modules/minilog/lib/common/transform.js\");\n\nvar newlines = /\\n+$/,\n    logger = new Transform();\n\nlogger.write = function(name, level, args) {\n  var i = args.length-1;\n  if (typeof console === 'undefined' || !console.log) {\n    return;\n  }\n  if(console.log.apply) {\n    return console.log.apply(console, [name, level].concat(args));\n  } else if(JSON && JSON.stringify) {\n    // console.log.apply is undefined in IE8 and IE9\n    // for IE8/9: make console.log at least a bit less awful\n    if(args[i] && typeof args[i] == 'string') {\n      args[i] = args[i].replace(newlines, '');\n    }\n    try {\n      for(i = 0; i < args.length; i++) {\n        args[i] = JSON.stringify(args[i]);\n      }\n    } catch(e) {}\n    console.log(args.join(' '));\n  }\n};\n\nlogger.formatters = ['color', 'minilog'];\nlogger.color = __webpack_require__(/*! ./formatters/color.js */ \"./node_modules/minilog/lib/web/formatters/color.js\");\nlogger.minilog = __webpack_require__(/*! ./formatters/minilog.js */ \"./node_modules/minilog/lib/web/formatters/minilog.js\");\n\nmodule.exports = logger;\n\n\n//# sourceURL=webpack://GUI/./node_modules/minilog/lib/web/console.js?");
 
 /***/ }),
 
@@ -530,25 +170,7 @@ module.exports = logger;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Transform = __webpack_require__(/*! ../../common/transform.js */ "./node_modules/minilog/lib/common/transform.js"),
-    color = __webpack_require__(/*! ./util.js */ "./node_modules/minilog/lib/web/formatters/util.js");
-
-var colors = { debug: ['cyan'], info: ['purple' ], warn: [ 'yellow', true ], error: [ 'red', true ] },
-    logger = new Transform();
-
-logger.write = function(name, level, args) {
-  var fn = console.log;
-  if(console[level] && console[level].apply) {
-    fn = console[level];
-    fn.apply(console, [ '%c'+name+' %c'+level, color('gray'), color.apply(color, colors[level])].concat(args));
-  }
-};
-
-// NOP, because piping the formatted logs can only cause trouble.
-logger.pipe = function() { };
-
-module.exports = logger;
-
+eval("var Transform = __webpack_require__(/*! ../../common/transform.js */ \"./node_modules/minilog/lib/common/transform.js\"),\n    color = __webpack_require__(/*! ./util.js */ \"./node_modules/minilog/lib/web/formatters/util.js\");\n\nvar colors = { debug: ['cyan'], info: ['purple' ], warn: [ 'yellow', true ], error: [ 'red', true ] },\n    logger = new Transform();\n\nlogger.write = function(name, level, args) {\n  var fn = console.log;\n  if(console[level] && console[level].apply) {\n    fn = console[level];\n    fn.apply(console, [ '%c'+name+' %c'+level, color('gray'), color.apply(color, colors[level])].concat(args));\n  }\n};\n\n// NOP, because piping the formatted logs can only cause trouble.\nlogger.pipe = function() { };\n\nmodule.exports = logger;\n\n\n//# sourceURL=webpack://GUI/./node_modules/minilog/lib/web/formatters/color.js?");
 
 /***/ }),
 
@@ -559,33 +181,7 @@ module.exports = logger;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Transform = __webpack_require__(/*! ../../common/transform.js */ "./node_modules/minilog/lib/common/transform.js"),
-    color = __webpack_require__(/*! ./util.js */ "./node_modules/minilog/lib/web/formatters/util.js"),
-    colors = { debug: ['gray'], info: ['purple' ], warn: [ 'yellow', true ], error: [ 'red', true ] },
-    logger = new Transform();
-
-logger.write = function(name, level, args) {
-  var fn = console.log;
-  if(level != 'debug' && console[level]) {
-    fn = console[level];
-  }
-
-  var subset = [], i = 0;
-  if(level != 'info') {
-    for(; i < args.length; i++) {
-      if(typeof args[i] != 'string') break;
-    }
-    fn.apply(console, [ '%c'+name +' '+ args.slice(0, i).join(' '), color.apply(color, colors[level]) ].concat(args.slice(i)));
-  } else {
-    fn.apply(console, [ '%c'+name, color.apply(color, colors[level]) ].concat(args));
-  }
-};
-
-// NOP, because piping the formatted logs can only cause trouble.
-logger.pipe = function() { };
-
-module.exports = logger;
-
+eval("var Transform = __webpack_require__(/*! ../../common/transform.js */ \"./node_modules/minilog/lib/common/transform.js\"),\n    color = __webpack_require__(/*! ./util.js */ \"./node_modules/minilog/lib/web/formatters/util.js\"),\n    colors = { debug: ['gray'], info: ['purple' ], warn: [ 'yellow', true ], error: [ 'red', true ] },\n    logger = new Transform();\n\nlogger.write = function(name, level, args) {\n  var fn = console.log;\n  if(level != 'debug' && console[level]) {\n    fn = console[level];\n  }\n\n  var subset = [], i = 0;\n  if(level != 'info') {\n    for(; i < args.length; i++) {\n      if(typeof args[i] != 'string') break;\n    }\n    fn.apply(console, [ '%c'+name +' '+ args.slice(0, i).join(' '), color.apply(color, colors[level]) ].concat(args.slice(i)));\n  } else {\n    fn.apply(console, [ '%c'+name, color.apply(color, colors[level]) ].concat(args));\n  }\n};\n\n// NOP, because piping the formatted logs can only cause trouble.\nlogger.pipe = function() { };\n\nmodule.exports = logger;\n\n\n//# sourceURL=webpack://GUI/./node_modules/minilog/lib/web/formatters/minilog.js?");
 
 /***/ }),
 
@@ -596,27 +192,7 @@ module.exports = logger;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var hex = {
-  black: '#000',
-  red: '#c23621',
-  green: '#25bc26',
-  yellow: '#bbbb00',
-  blue:  '#492ee1',
-  magenta: '#d338d3',
-  cyan: '#33bbc8',
-  gray: '#808080',
-  purple: '#708'
-};
-function color(fg, isInverse) {
-  if(isInverse) {
-    return 'color: #fff; background: '+hex[fg]+';';
-  } else {
-    return 'color: '+hex[fg]+';';
-  }
-}
-
-module.exports = color;
-
+eval("var hex = {\n  black: '#000',\n  red: '#c23621',\n  green: '#25bc26',\n  yellow: '#bbbb00',\n  blue:  '#492ee1',\n  magenta: '#d338d3',\n  cyan: '#33bbc8',\n  gray: '#808080',\n  purple: '#708'\n};\nfunction color(fg, isInverse) {\n  if(isInverse) {\n    return 'color: #fff; background: '+hex[fg]+';';\n  } else {\n    return 'color: '+hex[fg]+';';\n  }\n}\n\nmodule.exports = color;\n\n\n//# sourceURL=webpack://GUI/./node_modules/minilog/lib/web/formatters/util.js?");
 
 /***/ }),
 
@@ -627,49 +203,7 @@ module.exports = color;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Minilog = __webpack_require__(/*! ../common/minilog.js */ "./node_modules/minilog/lib/common/minilog.js");
-
-var oldEnable = Minilog.enable,
-    oldDisable = Minilog.disable,
-    isChrome = (typeof navigator != 'undefined' && /chrome/i.test(navigator.userAgent)),
-    console = __webpack_require__(/*! ./console.js */ "./node_modules/minilog/lib/web/console.js");
-
-// Use a more capable logging backend if on Chrome
-Minilog.defaultBackend = (isChrome ? console.minilog : console);
-
-// apply enable inputs from localStorage and from the URL
-if(typeof window != 'undefined') {
-  try {
-    Minilog.enable(JSON.parse(window.localStorage['minilogSettings']));
-  } catch(e) {}
-  if(window.location && window.location.search) {
-    var match = RegExp('[?&]minilog=([^&]*)').exec(window.location.search);
-    match && Minilog.enable(decodeURIComponent(match[1]));
-  }
-}
-
-// Make enable also add to localStorage
-Minilog.enable = function() {
-  oldEnable.call(Minilog, true);
-  try { window.localStorage['minilogSettings'] = JSON.stringify(true); } catch(e) {}
-  return this;
-};
-
-Minilog.disable = function() {
-  oldDisable.call(Minilog);
-  try { delete window.localStorage.minilogSettings; } catch(e) {}
-  return this;
-};
-
-exports = module.exports = Minilog;
-
-exports.backends = {
-  array: __webpack_require__(/*! ./array.js */ "./node_modules/minilog/lib/web/array.js"),
-  browser: Minilog.defaultBackend,
-  localStorage: __webpack_require__(/*! ./localstorage.js */ "./node_modules/minilog/lib/web/localstorage.js"),
-  jQuery: __webpack_require__(/*! ./jquery_simple.js */ "./node_modules/minilog/lib/web/jquery_simple.js")
-};
-
+eval("var Minilog = __webpack_require__(/*! ../common/minilog.js */ \"./node_modules/minilog/lib/common/minilog.js\");\n\nvar oldEnable = Minilog.enable,\n    oldDisable = Minilog.disable,\n    isChrome = (typeof navigator != 'undefined' && /chrome/i.test(navigator.userAgent)),\n    console = __webpack_require__(/*! ./console.js */ \"./node_modules/minilog/lib/web/console.js\");\n\n// Use a more capable logging backend if on Chrome\nMinilog.defaultBackend = (isChrome ? console.minilog : console);\n\n// apply enable inputs from localStorage and from the URL\nif(typeof window != 'undefined') {\n  try {\n    Minilog.enable(JSON.parse(window.localStorage['minilogSettings']));\n  } catch(e) {}\n  if(window.location && window.location.search) {\n    var match = RegExp('[?&]minilog=([^&]*)').exec(window.location.search);\n    match && Minilog.enable(decodeURIComponent(match[1]));\n  }\n}\n\n// Make enable also add to localStorage\nMinilog.enable = function() {\n  oldEnable.call(Minilog, true);\n  try { window.localStorage['minilogSettings'] = JSON.stringify(true); } catch(e) {}\n  return this;\n};\n\nMinilog.disable = function() {\n  oldDisable.call(Minilog);\n  try { delete window.localStorage.minilogSettings; } catch(e) {}\n  return this;\n};\n\nexports = module.exports = Minilog;\n\nexports.backends = {\n  array: __webpack_require__(/*! ./array.js */ \"./node_modules/minilog/lib/web/array.js\"),\n  browser: Minilog.defaultBackend,\n  localStorage: __webpack_require__(/*! ./localstorage.js */ \"./node_modules/minilog/lib/web/localstorage.js\"),\n  jQuery: __webpack_require__(/*! ./jquery_simple.js */ \"./node_modules/minilog/lib/web/jquery_simple.js\")\n};\n\n\n//# sourceURL=webpack://GUI/./node_modules/minilog/lib/web/index.js?");
 
 /***/ }),
 
@@ -680,81 +214,7 @@ exports.backends = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Transform = __webpack_require__(/*! ../common/transform.js */ "./node_modules/minilog/lib/common/transform.js");
-
-var cid = new Date().valueOf().toString(36);
-
-function AjaxLogger(options) {
-  this.url = options.url || '';
-  this.cache = [];
-  this.timer = null;
-  this.interval = options.interval || 30*1000;
-  this.enabled = true;
-  this.jQuery = window.jQuery;
-  this.extras = {};
-}
-
-Transform.mixin(AjaxLogger);
-
-AjaxLogger.prototype.write = function(name, level, args) {
-  if(!this.timer) { this.init(); }
-  this.cache.push([name, level].concat(args));
-};
-
-AjaxLogger.prototype.init = function() {
-  if(!this.enabled || !this.jQuery) return;
-  var self = this;
-  this.timer = setTimeout(function() {
-    var i, logs = [], ajaxData, url = self.url;
-    if(self.cache.length == 0) return self.init();
-    // Test each log line and only log the ones that are valid (e.g. don't have circular references).
-    // Slight performance hit but benefit is we log all valid lines.
-    for(i = 0; i < self.cache.length; i++) {
-      try {
-        JSON.stringify(self.cache[i]);
-        logs.push(self.cache[i]);
-      } catch(e) { }
-    }
-    if(self.jQuery.isEmptyObject(self.extras)) {
-        ajaxData = JSON.stringify({ logs: logs });
-        url = self.url + '?client_id=' + cid;
-    } else {
-        ajaxData = JSON.stringify(self.jQuery.extend({logs: logs}, self.extras));
-    }
-
-    self.jQuery.ajax(url, {
-      type: 'POST',
-      cache: false,
-      processData: false,
-      data: ajaxData,
-      contentType: 'application/json',
-      timeout: 10000
-    }).success(function(data, status, jqxhr) {
-      if(data.interval) {
-        self.interval = Math.max(1000, data.interval);
-      }
-    }).error(function() {
-      self.interval = 30000;
-    }).always(function() {
-      self.init();
-    });
-    self.cache = [];
-  }, this.interval);
-};
-
-AjaxLogger.prototype.end = function() {};
-
-// wait until jQuery is defined. Useful if you don't control the load order.
-AjaxLogger.jQueryWait = function(onDone) {
-  if(typeof window !== 'undefined' && (window.jQuery || window.$)) {
-    return onDone(window.jQuery || window.$);
-  } else if (typeof window !== 'undefined') {
-    setTimeout(function() { AjaxLogger.jQueryWait(onDone); }, 200);
-  }
-};
-
-module.exports = AjaxLogger;
-
+eval("var Transform = __webpack_require__(/*! ../common/transform.js */ \"./node_modules/minilog/lib/common/transform.js\");\n\nvar cid = new Date().valueOf().toString(36);\n\nfunction AjaxLogger(options) {\n  this.url = options.url || '';\n  this.cache = [];\n  this.timer = null;\n  this.interval = options.interval || 30*1000;\n  this.enabled = true;\n  this.jQuery = window.jQuery;\n  this.extras = {};\n}\n\nTransform.mixin(AjaxLogger);\n\nAjaxLogger.prototype.write = function(name, level, args) {\n  if(!this.timer) { this.init(); }\n  this.cache.push([name, level].concat(args));\n};\n\nAjaxLogger.prototype.init = function() {\n  if(!this.enabled || !this.jQuery) return;\n  var self = this;\n  this.timer = setTimeout(function() {\n    var i, logs = [], ajaxData, url = self.url;\n    if(self.cache.length == 0) return self.init();\n    // Test each log line and only log the ones that are valid (e.g. don't have circular references).\n    // Slight performance hit but benefit is we log all valid lines.\n    for(i = 0; i < self.cache.length; i++) {\n      try {\n        JSON.stringify(self.cache[i]);\n        logs.push(self.cache[i]);\n      } catch(e) { }\n    }\n    if(self.jQuery.isEmptyObject(self.extras)) {\n        ajaxData = JSON.stringify({ logs: logs });\n        url = self.url + '?client_id=' + cid;\n    } else {\n        ajaxData = JSON.stringify(self.jQuery.extend({logs: logs}, self.extras));\n    }\n\n    self.jQuery.ajax(url, {\n      type: 'POST',\n      cache: false,\n      processData: false,\n      data: ajaxData,\n      contentType: 'application/json',\n      timeout: 10000\n    }).success(function(data, status, jqxhr) {\n      if(data.interval) {\n        self.interval = Math.max(1000, data.interval);\n      }\n    }).error(function() {\n      self.interval = 30000;\n    }).always(function() {\n      self.init();\n    });\n    self.cache = [];\n  }, this.interval);\n};\n\nAjaxLogger.prototype.end = function() {};\n\n// wait until jQuery is defined. Useful if you don't control the load order.\nAjaxLogger.jQueryWait = function(onDone) {\n  if(typeof window !== 'undefined' && (window.jQuery || window.$)) {\n    return onDone(window.jQuery || window.$);\n  } else if (typeof window !== 'undefined') {\n    setTimeout(function() { AjaxLogger.jQueryWait(onDone); }, 200);\n  }\n};\n\nmodule.exports = AjaxLogger;\n\n\n//# sourceURL=webpack://GUI/./node_modules/minilog/lib/web/jquery_simple.js?");
 
 /***/ }),
 
@@ -765,21 +225,7 @@ module.exports = AjaxLogger;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Transform = __webpack_require__(/*! ../common/transform.js */ "./node_modules/minilog/lib/common/transform.js"),
-    cache = false;
-
-var logger = new Transform();
-
-logger.write = function(name, level, args) {
-  if(typeof window == 'undefined' || typeof JSON == 'undefined' || !JSON.stringify || !JSON.parse) return;
-  try {
-    if(!cache) { cache = (window.localStorage.minilog ? JSON.parse(window.localStorage.minilog) : []); }
-    cache.push([ new Date().toString(), name, level, args ]);
-    window.localStorage.minilog = JSON.stringify(cache);
-  } catch(e) {}
-};
-
-module.exports = logger;
+eval("var Transform = __webpack_require__(/*! ../common/transform.js */ \"./node_modules/minilog/lib/common/transform.js\"),\n    cache = false;\n\nvar logger = new Transform();\n\nlogger.write = function(name, level, args) {\n  if(typeof window == 'undefined' || typeof JSON == 'undefined' || !JSON.stringify || !JSON.parse) return;\n  try {\n    if(!cache) { cache = (window.localStorage.minilog ? JSON.parse(window.localStorage.minilog) : []); }\n    cache.push([ new Date().toString(), name, level, args ]);\n    window.localStorage.minilog = JSON.stringify(cache);\n  } catch(e) {}\n};\n\nmodule.exports = logger;\n\n//# sourceURL=webpack://GUI/./node_modules/minilog/lib/web/localstorage.js?");
 
 /***/ }),
 
@@ -790,338 +236,7 @@ module.exports = logger;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var log = __webpack_require__(/*! ../util/log */ "./node_modules/scratch-vm/src/util/log.js");
-/**
- * @typedef {object} DispatchCallMessage - a message to the dispatch system representing a service method call
- * @property {*} responseId - send a response message with this response ID. See {@link DispatchResponseMessage}
- * @property {string} service - the name of the service to be called
- * @property {string} method - the name of the method to be called
- * @property {Array|undefined} args - the arguments to be passed to the method
- */
-
-/**
- * @typedef {object} DispatchResponseMessage - a message to the dispatch system representing the results of a call
- * @property {*} responseId - a copy of the response ID from the call which generated this response
- * @property {*|undefined} error - if this is truthy, then it contains results from a failed call (such as an exception)
- * @property {*|undefined} result - if error is not truthy, then this contains the return value of the call (if any)
- */
-
-/**
- * @typedef {DispatchCallMessage|DispatchResponseMessage} DispatchMessage
- * Any message to the dispatch system.
- */
-
-/**
- * The SharedDispatch class is responsible for dispatch features shared by
- * {@link CentralDispatch} and {@link WorkerDispatch}.
- */
-
-
-var SharedDispatch = /*#__PURE__*/function () {
-  function SharedDispatch() {
-    _classCallCheck(this, SharedDispatch);
-
-    /**
-     * List of callback registrations for promises waiting for a response from a call to a service on another
-     * worker. A callback registration is an array of [resolve,reject] Promise functions.
-     * Calls to local services don't enter this list.
-     * @type {Array.<Function[]>}
-     */
-    this.callbacks = [];
-    /**
-     * The next response ID to be used.
-     * @type {int}
-     */
-
-    this.nextResponseId = 0;
-  }
-  /**
-   * Call a particular method on a particular service, regardless of whether that service is provided locally or on
-   * a worker. If the service is provided by a worker, the `args` will be copied using the Structured Clone
-   * algorithm, except for any items which are also in the `transfer` list. Ownership of those items will be
-   * transferred to the worker, and they should not be used after this call.
-   * @example
-   *      dispatcher.call('vm', 'setData', 'cat', 42);
-   *      // this finds the worker for the 'vm' service, then on that worker calls:
-   *      vm.setData('cat', 42);
-   * @param {string} service - the name of the service.
-   * @param {string} method - the name of the method.
-   * @param {*} [args] - the arguments to be copied to the method, if any.
-   * @returns {Promise} - a promise for the return value of the service method.
-   */
-
-
-  _createClass(SharedDispatch, [{
-    key: "call",
-    value: function call(service, method) {
-      for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-        args[_key - 2] = arguments[_key];
-      }
-
-      return this.transferCall.apply(this, [service, method, null].concat(args));
-    }
-    /**
-     * Call a particular method on a particular service, regardless of whether that service is provided locally or on
-     * a worker. If the service is provided by a worker, the `args` will be copied using the Structured Clone
-     * algorithm, except for any items which are also in the `transfer` list. Ownership of those items will be
-     * transferred to the worker, and they should not be used after this call.
-     * @example
-     *      dispatcher.transferCall('vm', 'setData', [myArrayBuffer], 'cat', myArrayBuffer);
-     *      // this finds the worker for the 'vm' service, transfers `myArrayBuffer` to it, then on that worker calls:
-     *      vm.setData('cat', myArrayBuffer);
-     * @param {string} service - the name of the service.
-     * @param {string} method - the name of the method.
-     * @param {Array} [transfer] - objects to be transferred instead of copied. Must be present in `args` to be useful.
-     * @param {*} [args] - the arguments to be copied to the method, if any.
-     * @returns {Promise} - a promise for the return value of the service method.
-     */
-
-  }, {
-    key: "transferCall",
-    value: function transferCall(service, method, transfer) {
-      try {
-        var _this$_getServiceProv = this._getServiceProvider(service),
-            provider = _this$_getServiceProv.provider,
-            isRemote = _this$_getServiceProv.isRemote;
-
-        if (provider) {
-          for (var _len2 = arguments.length, args = new Array(_len2 > 3 ? _len2 - 3 : 0), _key2 = 3; _key2 < _len2; _key2++) {
-            args[_key2 - 3] = arguments[_key2];
-          }
-
-          if (isRemote) {
-            return this._remoteTransferCall.apply(this, [provider, service, method, transfer].concat(args));
-          }
-
-          var result = provider[method].apply(provider, args);
-          return Promise.resolve(result);
-        }
-
-        return Promise.reject(new Error("Service not found: ".concat(service)));
-      } catch (e) {
-        return Promise.reject(e);
-      }
-    }
-    /**
-     * Check if a particular service lives on another worker.
-     * @param {string} service - the service to check.
-     * @returns {boolean} - true if the service is remote (calls must cross a Worker boundary), false otherwise.
-     * @private
-     */
-
-  }, {
-    key: "_isRemoteService",
-    value: function _isRemoteService(service) {
-      return this._getServiceProvider(service).isRemote;
-    }
-    /**
-     * Like {@link call}, but force the call to be posted through a particular communication channel.
-     * @param {object} provider - send the call through this object's `postMessage` function.
-     * @param {string} service - the name of the service.
-     * @param {string} method - the name of the method.
-     * @param {*} [args] - the arguments to be copied to the method, if any.
-     * @returns {Promise} - a promise for the return value of the service method.
-     */
-
-  }, {
-    key: "_remoteCall",
-    value: function _remoteCall(provider, service, method) {
-      for (var _len3 = arguments.length, args = new Array(_len3 > 3 ? _len3 - 3 : 0), _key3 = 3; _key3 < _len3; _key3++) {
-        args[_key3 - 3] = arguments[_key3];
-      }
-
-      return this._remoteTransferCall.apply(this, [provider, service, method, null].concat(args));
-    }
-    /**
-     * Like {@link transferCall}, but force the call to be posted through a particular communication channel.
-     * @param {object} provider - send the call through this object's `postMessage` function.
-     * @param {string} service - the name of the service.
-     * @param {string} method - the name of the method.
-     * @param {Array} [transfer] - objects to be transferred instead of copied. Must be present in `args` to be useful.
-     * @param {*} [args] - the arguments to be copied to the method, if any.
-     * @returns {Promise} - a promise for the return value of the service method.
-     */
-
-  }, {
-    key: "_remoteTransferCall",
-    value: function _remoteTransferCall(provider, service, method, transfer) {
-      var _this = this;
-
-      for (var _len4 = arguments.length, args = new Array(_len4 > 4 ? _len4 - 4 : 0), _key4 = 4; _key4 < _len4; _key4++) {
-        args[_key4 - 4] = arguments[_key4];
-      }
-
-      return new Promise(function (resolve, reject) {
-        var responseId = _this._storeCallbacks(resolve, reject);
-        /** @TODO: remove this hack! this is just here so we don't try to send `util` to a worker */
-
-
-        if (args.length > 0 && typeof args[args.length - 1].yield === 'function') {
-          args.pop();
-        }
-
-        if (transfer) {
-          provider.postMessage({
-            service: service,
-            method: method,
-            responseId: responseId,
-            args: args
-          }, transfer);
-        } else {
-          provider.postMessage({
-            service: service,
-            method: method,
-            responseId: responseId,
-            args: args
-          });
-        }
-      });
-    }
-    /**
-     * Store callback functions pending a response message.
-     * @param {Function} resolve - function to call if the service method returns.
-     * @param {Function} reject - function to call if the service method throws.
-     * @returns {*} - a unique response ID for this set of callbacks. See {@link _deliverResponse}.
-     * @protected
-     */
-
-  }, {
-    key: "_storeCallbacks",
-    value: function _storeCallbacks(resolve, reject) {
-      var responseId = this.nextResponseId++;
-      this.callbacks[responseId] = [resolve, reject];
-      return responseId;
-    }
-    /**
-     * Deliver call response from a worker. This should only be called as the result of a message from a worker.
-     * @param {int} responseId - the response ID of the callback set to call.
-     * @param {DispatchResponseMessage} message - the message containing the response value(s).
-     * @protected
-     */
-
-  }, {
-    key: "_deliverResponse",
-    value: function _deliverResponse(responseId, message) {
-      try {
-        var _this$callbacks$respo = _slicedToArray(this.callbacks[responseId], 2),
-            resolve = _this$callbacks$respo[0],
-            reject = _this$callbacks$respo[1];
-
-        delete this.callbacks[responseId];
-
-        if (message.error) {
-          reject(message.error);
-        } else {
-          resolve(message.result);
-        }
-      } catch (e) {
-        log.error("Dispatch callback failed: ".concat(JSON.stringify(e)));
-      }
-    }
-    /**
-     * Handle a message event received from a connected worker.
-     * @param {Worker} worker - the worker which sent the message, or the global object if running in a worker.
-     * @param {MessageEvent} event - the message event to be handled.
-     * @protected
-     */
-
-  }, {
-    key: "_onMessage",
-    value: function _onMessage(worker, event) {
-      /** @type {DispatchMessage} */
-      var message = event.data;
-      message.args = message.args || [];
-      var promise;
-
-      if (message.service) {
-        if (message.service === 'dispatch') {
-          promise = this._onDispatchMessage(worker, message);
-        } else {
-          promise = this.call.apply(this, [message.service, message.method].concat(_toConsumableArray(message.args)));
-        }
-      } else if (typeof message.responseId === 'undefined') {
-        log.error("Dispatch caught malformed message from a worker: ".concat(JSON.stringify(event)));
-      } else {
-        this._deliverResponse(message.responseId, message);
-      }
-
-      if (promise) {
-        if (typeof message.responseId === 'undefined') {
-          log.error("Dispatch message missing required response ID: ".concat(JSON.stringify(event)));
-        } else {
-          promise.then(function (result) {
-            return worker.postMessage({
-              responseId: message.responseId,
-              result: result
-            });
-          }, function (error) {
-            return worker.postMessage({
-              responseId: message.responseId,
-              error: error
-            });
-          });
-        }
-      }
-    }
-    /**
-     * Fetch the service provider object for a particular service name.
-     * @abstract
-     * @param {string} service - the name of the service to look up
-     * @returns {{provider:(object|Worker), isRemote:boolean}} - the means to contact the service, if found
-     * @protected
-     */
-
-  }, {
-    key: "_getServiceProvider",
-    value: function _getServiceProvider(service) {
-      throw new Error("Could not get provider for ".concat(service, ": _getServiceProvider not implemented"));
-    }
-    /**
-     * Handle a call message sent to the dispatch service itself
-     * @abstract
-     * @param {Worker} worker - the worker which sent the message.
-     * @param {DispatchCallMessage} message - the message to be handled.
-     * @returns {Promise|undefined} - a promise for the results of this operation, if appropriate
-     * @private
-     */
-
-  }, {
-    key: "_onDispatchMessage",
-    value: function _onDispatchMessage(worker, message) {
-      throw new Error("Unimplemented dispatch message handler cannot handle ".concat(message.method, " method"));
-    }
-  }]);
-
-  return SharedDispatch;
-}();
-
-module.exports = SharedDispatch;
+eval("function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }\n\nfunction _nonIterableSpread() { throw new TypeError(\"Invalid attempt to spread non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.\"); }\n\nfunction _iterableToArray(iter) { if (typeof Symbol !== \"undefined\" && iter[Symbol.iterator] != null || iter[\"@@iterator\"] != null) return Array.from(iter); }\n\nfunction _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }\n\nfunction _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }\n\nfunction _nonIterableRest() { throw new TypeError(\"Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.\"); }\n\nfunction _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === \"string\") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === \"Object\" && o.constructor) n = o.constructor.name; if (n === \"Map\" || n === \"Set\") return Array.from(o); if (n === \"Arguments\" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }\n\nfunction _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }\n\nfunction _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== \"undefined\" && arr[Symbol.iterator] || arr[\"@@iterator\"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i[\"return\"] != null) _i[\"return\"](); } finally { if (_d) throw _e; } } return _arr; }\n\nfunction _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nvar log = __webpack_require__(/*! ../util/log */ \"./node_modules/scratch-vm/src/util/log.js\");\n/**\n * @typedef {object} DispatchCallMessage - a message to the dispatch system representing a service method call\n * @property {*} responseId - send a response message with this response ID. See {@link DispatchResponseMessage}\n * @property {string} service - the name of the service to be called\n * @property {string} method - the name of the method to be called\n * @property {Array|undefined} args - the arguments to be passed to the method\n */\n\n/**\n * @typedef {object} DispatchResponseMessage - a message to the dispatch system representing the results of a call\n * @property {*} responseId - a copy of the response ID from the call which generated this response\n * @property {*|undefined} error - if this is truthy, then it contains results from a failed call (such as an exception)\n * @property {*|undefined} result - if error is not truthy, then this contains the return value of the call (if any)\n */\n\n/**\n * @typedef {DispatchCallMessage|DispatchResponseMessage} DispatchMessage\n * Any message to the dispatch system.\n */\n\n/**\n * The SharedDispatch class is responsible for dispatch features shared by\n * {@link CentralDispatch} and {@link WorkerDispatch}.\n */\n\n\nvar SharedDispatch = /*#__PURE__*/function () {\n  function SharedDispatch() {\n    _classCallCheck(this, SharedDispatch);\n\n    /**\n     * List of callback registrations for promises waiting for a response from a call to a service on another\n     * worker. A callback registration is an array of [resolve,reject] Promise functions.\n     * Calls to local services don't enter this list.\n     * @type {Array.<Function[]>}\n     */\n    this.callbacks = [];\n    /**\n     * The next response ID to be used.\n     * @type {int}\n     */\n\n    this.nextResponseId = 0;\n  }\n  /**\n   * Call a particular method on a particular service, regardless of whether that service is provided locally or on\n   * a worker. If the service is provided by a worker, the `args` will be copied using the Structured Clone\n   * algorithm, except for any items which are also in the `transfer` list. Ownership of those items will be\n   * transferred to the worker, and they should not be used after this call.\n   * @example\n   *      dispatcher.call('vm', 'setData', 'cat', 42);\n   *      // this finds the worker for the 'vm' service, then on that worker calls:\n   *      vm.setData('cat', 42);\n   * @param {string} service - the name of the service.\n   * @param {string} method - the name of the method.\n   * @param {*} [args] - the arguments to be copied to the method, if any.\n   * @returns {Promise} - a promise for the return value of the service method.\n   */\n\n\n  _createClass(SharedDispatch, [{\n    key: \"call\",\n    value: function call(service, method) {\n      for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {\n        args[_key - 2] = arguments[_key];\n      }\n\n      return this.transferCall.apply(this, [service, method, null].concat(args));\n    }\n    /**\n     * Call a particular method on a particular service, regardless of whether that service is provided locally or on\n     * a worker. If the service is provided by a worker, the `args` will be copied using the Structured Clone\n     * algorithm, except for any items which are also in the `transfer` list. Ownership of those items will be\n     * transferred to the worker, and they should not be used after this call.\n     * @example\n     *      dispatcher.transferCall('vm', 'setData', [myArrayBuffer], 'cat', myArrayBuffer);\n     *      // this finds the worker for the 'vm' service, transfers `myArrayBuffer` to it, then on that worker calls:\n     *      vm.setData('cat', myArrayBuffer);\n     * @param {string} service - the name of the service.\n     * @param {string} method - the name of the method.\n     * @param {Array} [transfer] - objects to be transferred instead of copied. Must be present in `args` to be useful.\n     * @param {*} [args] - the arguments to be copied to the method, if any.\n     * @returns {Promise} - a promise for the return value of the service method.\n     */\n\n  }, {\n    key: \"transferCall\",\n    value: function transferCall(service, method, transfer) {\n      try {\n        var _this$_getServiceProv = this._getServiceProvider(service),\n            provider = _this$_getServiceProv.provider,\n            isRemote = _this$_getServiceProv.isRemote;\n\n        if (provider) {\n          for (var _len2 = arguments.length, args = new Array(_len2 > 3 ? _len2 - 3 : 0), _key2 = 3; _key2 < _len2; _key2++) {\n            args[_key2 - 3] = arguments[_key2];\n          }\n\n          if (isRemote) {\n            return this._remoteTransferCall.apply(this, [provider, service, method, transfer].concat(args));\n          }\n\n          var result = provider[method].apply(provider, args);\n          return Promise.resolve(result);\n        }\n\n        return Promise.reject(new Error(\"Service not found: \".concat(service)));\n      } catch (e) {\n        return Promise.reject(e);\n      }\n    }\n    /**\n     * Check if a particular service lives on another worker.\n     * @param {string} service - the service to check.\n     * @returns {boolean} - true if the service is remote (calls must cross a Worker boundary), false otherwise.\n     * @private\n     */\n\n  }, {\n    key: \"_isRemoteService\",\n    value: function _isRemoteService(service) {\n      return this._getServiceProvider(service).isRemote;\n    }\n    /**\n     * Like {@link call}, but force the call to be posted through a particular communication channel.\n     * @param {object} provider - send the call through this object's `postMessage` function.\n     * @param {string} service - the name of the service.\n     * @param {string} method - the name of the method.\n     * @param {*} [args] - the arguments to be copied to the method, if any.\n     * @returns {Promise} - a promise for the return value of the service method.\n     */\n\n  }, {\n    key: \"_remoteCall\",\n    value: function _remoteCall(provider, service, method) {\n      for (var _len3 = arguments.length, args = new Array(_len3 > 3 ? _len3 - 3 : 0), _key3 = 3; _key3 < _len3; _key3++) {\n        args[_key3 - 3] = arguments[_key3];\n      }\n\n      return this._remoteTransferCall.apply(this, [provider, service, method, null].concat(args));\n    }\n    /**\n     * Like {@link transferCall}, but force the call to be posted through a particular communication channel.\n     * @param {object} provider - send the call through this object's `postMessage` function.\n     * @param {string} service - the name of the service.\n     * @param {string} method - the name of the method.\n     * @param {Array} [transfer] - objects to be transferred instead of copied. Must be present in `args` to be useful.\n     * @param {*} [args] - the arguments to be copied to the method, if any.\n     * @returns {Promise} - a promise for the return value of the service method.\n     */\n\n  }, {\n    key: \"_remoteTransferCall\",\n    value: function _remoteTransferCall(provider, service, method, transfer) {\n      var _this = this;\n\n      for (var _len4 = arguments.length, args = new Array(_len4 > 4 ? _len4 - 4 : 0), _key4 = 4; _key4 < _len4; _key4++) {\n        args[_key4 - 4] = arguments[_key4];\n      }\n\n      return new Promise(function (resolve, reject) {\n        var responseId = _this._storeCallbacks(resolve, reject);\n        /** @TODO: remove this hack! this is just here so we don't try to send `util` to a worker */\n\n\n        if (args.length > 0 && typeof args[args.length - 1].yield === 'function') {\n          args.pop();\n        }\n\n        if (transfer) {\n          provider.postMessage({\n            service: service,\n            method: method,\n            responseId: responseId,\n            args: args\n          }, transfer);\n        } else {\n          provider.postMessage({\n            service: service,\n            method: method,\n            responseId: responseId,\n            args: args\n          });\n        }\n      });\n    }\n    /**\n     * Store callback functions pending a response message.\n     * @param {Function} resolve - function to call if the service method returns.\n     * @param {Function} reject - function to call if the service method throws.\n     * @returns {*} - a unique response ID for this set of callbacks. See {@link _deliverResponse}.\n     * @protected\n     */\n\n  }, {\n    key: \"_storeCallbacks\",\n    value: function _storeCallbacks(resolve, reject) {\n      var responseId = this.nextResponseId++;\n      this.callbacks[responseId] = [resolve, reject];\n      return responseId;\n    }\n    /**\n     * Deliver call response from a worker. This should only be called as the result of a message from a worker.\n     * @param {int} responseId - the response ID of the callback set to call.\n     * @param {DispatchResponseMessage} message - the message containing the response value(s).\n     * @protected\n     */\n\n  }, {\n    key: \"_deliverResponse\",\n    value: function _deliverResponse(responseId, message) {\n      try {\n        var _this$callbacks$respo = _slicedToArray(this.callbacks[responseId], 2),\n            resolve = _this$callbacks$respo[0],\n            reject = _this$callbacks$respo[1];\n\n        delete this.callbacks[responseId];\n\n        if (message.error) {\n          reject(message.error);\n        } else {\n          resolve(message.result);\n        }\n      } catch (e) {\n        log.error(\"Dispatch callback failed: \".concat(JSON.stringify(e)));\n      }\n    }\n    /**\n     * Handle a message event received from a connected worker.\n     * @param {Worker} worker - the worker which sent the message, or the global object if running in a worker.\n     * @param {MessageEvent} event - the message event to be handled.\n     * @protected\n     */\n\n  }, {\n    key: \"_onMessage\",\n    value: function _onMessage(worker, event) {\n      /** @type {DispatchMessage} */\n      var message = event.data;\n      message.args = message.args || [];\n      var promise;\n\n      if (message.service) {\n        if (message.service === 'dispatch') {\n          promise = this._onDispatchMessage(worker, message);\n        } else {\n          promise = this.call.apply(this, [message.service, message.method].concat(_toConsumableArray(message.args)));\n        }\n      } else if (typeof message.responseId === 'undefined') {\n        log.error(\"Dispatch caught malformed message from a worker: \".concat(JSON.stringify(event)));\n      } else {\n        this._deliverResponse(message.responseId, message);\n      }\n\n      if (promise) {\n        if (typeof message.responseId === 'undefined') {\n          log.error(\"Dispatch message missing required response ID: \".concat(JSON.stringify(event)));\n        } else {\n          promise.then(function (result) {\n            return worker.postMessage({\n              responseId: message.responseId,\n              result: result\n            });\n          }, function (error) {\n            return worker.postMessage({\n              responseId: message.responseId,\n              error: error\n            });\n          });\n        }\n      }\n    }\n    /**\n     * Fetch the service provider object for a particular service name.\n     * @abstract\n     * @param {string} service - the name of the service to look up\n     * @returns {{provider:(object|Worker), isRemote:boolean}} - the means to contact the service, if found\n     * @protected\n     */\n\n  }, {\n    key: \"_getServiceProvider\",\n    value: function _getServiceProvider(service) {\n      throw new Error(\"Could not get provider for \".concat(service, \": _getServiceProvider not implemented\"));\n    }\n    /**\n     * Handle a call message sent to the dispatch service itself\n     * @abstract\n     * @param {Worker} worker - the worker which sent the message.\n     * @param {DispatchCallMessage} message - the message to be handled.\n     * @returns {Promise|undefined} - a promise for the results of this operation, if appropriate\n     * @private\n     */\n\n  }, {\n    key: \"_onDispatchMessage\",\n    value: function _onDispatchMessage(worker, message) {\n      throw new Error(\"Unimplemented dispatch message handler cannot handle \".concat(message.method, \" method\"));\n    }\n  }]);\n\n  return SharedDispatch;\n}();\n\nmodule.exports = SharedDispatch;\n\n//# sourceURL=webpack://GUI/./node_modules/scratch-vm/src/dispatch/shared-dispatch.js?");
 
 /***/ }),
 
@@ -1132,172 +247,7 @@ module.exports = SharedDispatch;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-var SharedDispatch = __webpack_require__(/*! ./shared-dispatch */ "./node_modules/scratch-vm/src/dispatch/shared-dispatch.js");
-
-var log = __webpack_require__(/*! ../util/log */ "./node_modules/scratch-vm/src/util/log.js");
-/**
- * This class provides a Worker with the means to participate in the message dispatch system managed by CentralDispatch.
- * From any context in the messaging system, the dispatcher's "call" method can call any method on any "service"
- * provided in any participating context. The dispatch system will forward function arguments and return values across
- * worker boundaries as needed.
- * @see {CentralDispatch}
- */
-
-
-var WorkerDispatch = /*#__PURE__*/function (_SharedDispatch) {
-  _inherits(WorkerDispatch, _SharedDispatch);
-
-  var _super = _createSuper(WorkerDispatch);
-
-  function WorkerDispatch() {
-    var _this;
-
-    _classCallCheck(this, WorkerDispatch);
-
-    _this = _super.call(this);
-    /**
-     * This promise will be resolved when we have successfully connected to central dispatch.
-     * @type {Promise}
-     * @see {waitForConnection}
-     * @private
-     */
-
-    _this._connectionPromise = new Promise(function (resolve) {
-      _this._onConnect = resolve;
-    });
-    /**
-     * Map of service name to local service provider.
-     * If a service is not listed here, it is assumed to be provided by another context (another Worker or the main
-     * thread).
-     * @see {setService}
-     * @type {object}
-     */
-
-    _this.services = {};
-    _this._onMessage = _this._onMessage.bind(_assertThisInitialized(_this), self);
-
-    if (typeof self !== 'undefined') {
-      self.onmessage = _this._onMessage;
-    }
-
-    return _this;
-  }
-  /**
-   * @returns {Promise} a promise which will resolve upon connection to central dispatch. If you need to make a call
-   * immediately on "startup" you can attach a 'then' to this promise.
-   * @example
-   *      dispatch.waitForConnection.then(() => {
-   *          dispatch.call('myService', 'hello');
-   *      })
-   */
-
-
-  _createClass(WorkerDispatch, [{
-    key: "waitForConnection",
-    get: function get() {
-      return this._connectionPromise;
-    }
-    /**
-     * Set a local object as the global provider of the specified service.
-     * WARNING: Any method on the provider can be called from any worker within the dispatch system.
-     * @param {string} service - a globally unique string identifying this service. Examples: 'vm', 'gui', 'extension9'.
-     * @param {object} provider - a local object which provides this service.
-     * @returns {Promise} - a promise which will resolve once the service is registered.
-     */
-
-  }, {
-    key: "setService",
-    value: function setService(service, provider) {
-      var _this2 = this;
-
-      if (this.services.hasOwnProperty(service)) {
-        log.warn("Worker dispatch replacing existing service provider for ".concat(service));
-      }
-
-      this.services[service] = provider;
-      return this.waitForConnection.then(function () {
-        return _this2._remoteCall(self, 'dispatch', 'setService', service);
-      });
-    }
-    /**
-     * Fetch the service provider object for a particular service name.
-     * @override
-     * @param {string} service - the name of the service to look up
-     * @returns {{provider:(object|Worker), isRemote:boolean}} - the means to contact the service, if found
-     * @protected
-     */
-
-  }, {
-    key: "_getServiceProvider",
-    value: function _getServiceProvider(service) {
-      // if we don't have a local service by this name, contact central dispatch by calling `postMessage` on self
-      var provider = this.services[service];
-      return {
-        provider: provider || self,
-        isRemote: !provider
-      };
-    }
-    /**
-     * Handle a call message sent to the dispatch service itself
-     * @override
-     * @param {Worker} worker - the worker which sent the message.
-     * @param {DispatchCallMessage} message - the message to be handled.
-     * @returns {Promise|undefined} - a promise for the results of this operation, if appropriate
-     * @protected
-     */
-
-  }, {
-    key: "_onDispatchMessage",
-    value: function _onDispatchMessage(worker, message) {
-      var promise;
-
-      switch (message.method) {
-        case 'handshake':
-          promise = this._onConnect();
-          break;
-
-        case 'terminate':
-          // Don't close until next tick, after sending confirmation back
-          setTimeout(function () {
-            return self.close();
-          }, 0);
-          promise = Promise.resolve();
-          break;
-
-        default:
-          log.error("Worker dispatch received message for unknown method: ".concat(message.method));
-      }
-
-      return promise;
-    }
-  }]);
-
-  return WorkerDispatch;
-}(SharedDispatch);
-
-module.exports = new WorkerDispatch();
+eval("function _typeof(obj) { \"@babel/helpers - typeof\"; if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function\"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }\n\nfunction _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }\n\nfunction _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }\n\nfunction _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === \"object\" || typeof call === \"function\")) { return call; } return _assertThisInitialized(self); }\n\nfunction _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return self; }\n\nfunction _isNativeReflectConstruct() { if (typeof Reflect === \"undefined\" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === \"function\") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }\n\nfunction _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }\n\nvar SharedDispatch = __webpack_require__(/*! ./shared-dispatch */ \"./node_modules/scratch-vm/src/dispatch/shared-dispatch.js\");\n\nvar log = __webpack_require__(/*! ../util/log */ \"./node_modules/scratch-vm/src/util/log.js\");\n/**\n * This class provides a Worker with the means to participate in the message dispatch system managed by CentralDispatch.\n * From any context in the messaging system, the dispatcher's \"call\" method can call any method on any \"service\"\n * provided in any participating context. The dispatch system will forward function arguments and return values across\n * worker boundaries as needed.\n * @see {CentralDispatch}\n */\n\n\nvar WorkerDispatch = /*#__PURE__*/function (_SharedDispatch) {\n  _inherits(WorkerDispatch, _SharedDispatch);\n\n  var _super = _createSuper(WorkerDispatch);\n\n  function WorkerDispatch() {\n    var _this;\n\n    _classCallCheck(this, WorkerDispatch);\n\n    _this = _super.call(this);\n    /**\n     * This promise will be resolved when we have successfully connected to central dispatch.\n     * @type {Promise}\n     * @see {waitForConnection}\n     * @private\n     */\n\n    _this._connectionPromise = new Promise(function (resolve) {\n      _this._onConnect = resolve;\n    });\n    /**\n     * Map of service name to local service provider.\n     * If a service is not listed here, it is assumed to be provided by another context (another Worker or the main\n     * thread).\n     * @see {setService}\n     * @type {object}\n     */\n\n    _this.services = {};\n    _this._onMessage = _this._onMessage.bind(_assertThisInitialized(_this), self);\n\n    if (typeof self !== 'undefined') {\n      self.onmessage = _this._onMessage;\n    }\n\n    return _this;\n  }\n  /**\n   * @returns {Promise} a promise which will resolve upon connection to central dispatch. If you need to make a call\n   * immediately on \"startup\" you can attach a 'then' to this promise.\n   * @example\n   *      dispatch.waitForConnection.then(() => {\n   *          dispatch.call('myService', 'hello');\n   *      })\n   */\n\n\n  _createClass(WorkerDispatch, [{\n    key: \"waitForConnection\",\n    get: function get() {\n      return this._connectionPromise;\n    }\n    /**\n     * Set a local object as the global provider of the specified service.\n     * WARNING: Any method on the provider can be called from any worker within the dispatch system.\n     * @param {string} service - a globally unique string identifying this service. Examples: 'vm', 'gui', 'extension9'.\n     * @param {object} provider - a local object which provides this service.\n     * @returns {Promise} - a promise which will resolve once the service is registered.\n     */\n\n  }, {\n    key: \"setService\",\n    value: function setService(service, provider) {\n      var _this2 = this;\n\n      if (this.services.hasOwnProperty(service)) {\n        log.warn(\"Worker dispatch replacing existing service provider for \".concat(service));\n      }\n\n      this.services[service] = provider;\n      return this.waitForConnection.then(function () {\n        return _this2._remoteCall(self, 'dispatch', 'setService', service);\n      });\n    }\n    /**\n     * Fetch the service provider object for a particular service name.\n     * @override\n     * @param {string} service - the name of the service to look up\n     * @returns {{provider:(object|Worker), isRemote:boolean}} - the means to contact the service, if found\n     * @protected\n     */\n\n  }, {\n    key: \"_getServiceProvider\",\n    value: function _getServiceProvider(service) {\n      // if we don't have a local service by this name, contact central dispatch by calling `postMessage` on self\n      var provider = this.services[service];\n      return {\n        provider: provider || self,\n        isRemote: !provider\n      };\n    }\n    /**\n     * Handle a call message sent to the dispatch service itself\n     * @override\n     * @param {Worker} worker - the worker which sent the message.\n     * @param {DispatchCallMessage} message - the message to be handled.\n     * @returns {Promise|undefined} - a promise for the results of this operation, if appropriate\n     * @protected\n     */\n\n  }, {\n    key: \"_onDispatchMessage\",\n    value: function _onDispatchMessage(worker, message) {\n      var promise;\n\n      switch (message.method) {\n        case 'handshake':\n          promise = this._onConnect();\n          break;\n\n        case 'terminate':\n          // Don't close until next tick, after sending confirmation back\n          setTimeout(function () {\n            return self.close();\n          }, 0);\n          promise = Promise.resolve();\n          break;\n\n        default:\n          log.error(\"Worker dispatch received message for unknown method: \".concat(message.method));\n      }\n\n      return promise;\n    }\n  }]);\n\n  return WorkerDispatch;\n}(SharedDispatch);\n\nmodule.exports = new WorkerDispatch();\n\n//# sourceURL=webpack://GUI/./node_modules/scratch-vm/src/dispatch/worker-dispatch.js?");
 
 /***/ }),
 
@@ -1308,52 +258,7 @@ module.exports = new WorkerDispatch();
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-/**
- * Block argument types
- * @enum {string}
- */
-var ArgumentType = {
-  /**
-   * Numeric value with angle picker
-   */
-  ANGLE: 'angle',
-
-  /**
-   * Boolean value with hexagonal placeholder
-   */
-  BOOLEAN: 'Boolean',
-
-  /**
-   * Numeric value with color picker
-   */
-  COLOR: 'color',
-
-  /**
-   * Numeric value with text field
-   */
-  NUMBER: 'number',
-
-  /**
-   * String value with text field
-   */
-  STRING: 'string',
-
-  /**
-   * String value with matrix field
-   */
-  MATRIX: 'matrix',
-
-  /**
-   * MIDI note number with note picker (piano) field
-   */
-  NOTE: 'note',
-
-  /**
-   * Inline image on block (as part of the label)
-   */
-  IMAGE: 'image'
-};
-module.exports = ArgumentType;
+eval("/**\n * Block argument types\n * @enum {string}\n */\nvar ArgumentType = {\n  /**\n   * Numeric value with angle picker\n   */\n  ANGLE: 'angle',\n\n  /**\n   * Boolean value with hexagonal placeholder\n   */\n  BOOLEAN: 'Boolean',\n\n  /**\n   * Numeric value with color picker\n   */\n  COLOR: 'color',\n\n  /**\n   * Numeric value with text field\n   */\n  NUMBER: 'number',\n\n  /**\n   * String value with text field\n   */\n  STRING: 'string',\n\n  /**\n   * String value with matrix field\n   */\n  MATRIX: 'matrix',\n\n  /**\n   * MIDI note number with note picker (piano) field\n   */\n  NOTE: 'note',\n\n  /**\n   * Inline image on block (as part of the label)\n   */\n  IMAGE: 'image'\n};\nmodule.exports = ArgumentType;\n\n//# sourceURL=webpack://GUI/./node_modules/scratch-vm/src/extension-support/argument-type.js?");
 
 /***/ }),
 
@@ -1364,55 +269,7 @@ module.exports = ArgumentType;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-/**
- * Types of block
- * @enum {string}
- */
-var BlockType = {
-  /**
-   * Boolean reporter with hexagonal shape
-   */
-  BOOLEAN: 'Boolean',
-
-  /**
-   * A button (not an actual block) for some special action, like making a variable
-   */
-  BUTTON: 'button',
-
-  /**
-   * Command block
-   */
-  COMMAND: 'command',
-
-  /**
-   * Specialized command block which may or may not run a child branch
-   * The thread continues with the next block whether or not a child branch ran.
-   */
-  CONDITIONAL: 'conditional',
-
-  /**
-   * Specialized hat block with no implementation function
-   * This stack only runs if the corresponding event is emitted by other code.
-   */
-  EVENT: 'event',
-
-  /**
-   * Hat block which conditionally starts a block stack
-   */
-  HAT: 'hat',
-
-  /**
-   * Specialized command block which may or may not run a child branch
-   * If a child branch runs, the thread evaluates the loop block again.
-   */
-  LOOP: 'loop',
-
-  /**
-   * General reporter with numeric or string value
-   */
-  REPORTER: 'reporter'
-};
-module.exports = BlockType;
+eval("/**\n * Types of block\n * @enum {string}\n */\nvar BlockType = {\n  /**\n   * Boolean reporter with hexagonal shape\n   */\n  BOOLEAN: 'Boolean',\n\n  /**\n   * A button (not an actual block) for some special action, like making a variable\n   */\n  BUTTON: 'button',\n\n  /**\n   * Command block\n   */\n  COMMAND: 'command',\n\n  /**\n   * Specialized command block which may or may not run a child branch\n   * The thread continues with the next block whether or not a child branch ran.\n   */\n  CONDITIONAL: 'conditional',\n\n  /**\n   * Specialized hat block with no implementation function\n   * This stack only runs if the corresponding event is emitted by other code.\n   */\n  EVENT: 'event',\n\n  /**\n   * Hat block which conditionally starts a block stack\n   */\n  HAT: 'hat',\n\n  /**\n   * Specialized command block which may or may not run a child branch\n   * If a child branch runs, the thread evaluates the loop block again.\n   */\n  LOOP: 'loop',\n\n  /**\n   * General reporter with numeric or string value\n   */\n  REPORTER: 'reporter'\n};\nmodule.exports = BlockType;\n\n//# sourceURL=webpack://GUI/./node_modules/scratch-vm/src/extension-support/block-type.js?");
 
 /***/ }),
 
@@ -1423,22 +280,7 @@ module.exports = BlockType;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-/**
- * Default types of Target supported by the VM
- * @enum {string}
- */
-var TargetType = {
-  /**
-   * Rendered target which can move, change costumes, etc.
-   */
-  SPRITE: 'sprite',
-
-  /**
-   * Rendered target which cannot move but can change backdrops
-   */
-  STAGE: 'stage'
-};
-module.exports = TargetType;
+eval("/**\n * Default types of Target supported by the VM\n * @enum {string}\n */\nvar TargetType = {\n  /**\n   * Rendered target which can move, change costumes, etc.\n   */\n  SPRITE: 'sprite',\n\n  /**\n   * Rendered target which cannot move but can change backdrops\n   */\n  STAGE: 'stage'\n};\nmodule.exports = TargetType;\n\n//# sourceURL=webpack://GUI/./node_modules/scratch-vm/src/extension-support/target-type.js?");
 
 /***/ }),
 
@@ -1449,10 +291,7 @@ module.exports = TargetType;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var minilog = __webpack_require__(/*! minilog */ "./node_modules/minilog/lib/web/index.js");
-
-minilog.enable();
-module.exports = minilog('vm');
+eval("var minilog = __webpack_require__(/*! minilog */ \"./node_modules/minilog/lib/web/index.js\");\n\nminilog.enable();\nmodule.exports = minilog('vm');\n\n//# sourceURL=webpack://GUI/./node_modules/scratch-vm/src/util/log.js?");
 
 /***/ }),
 
@@ -1463,29 +302,8 @@ module.exports = minilog('vm');
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
+eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn this;\n})();\n\ntry {\n\t// This works if eval is allowed (see CSP)\n\tg = g || new Function(\"return this\")();\n} catch (e) {\n\t// This works if the window reference is available\n\tif (typeof window === \"object\") g = window;\n}\n\n// g can still be undefined, but nothing to do about it...\n// We return undefined, instead of nothing here, so it's\n// easier to handle this case. if(!global) { ...}\n\nmodule.exports = g;\n\n\n//# sourceURL=webpack://GUI/(webpack)/buildin/global.js?");
 
 /***/ })
 
 /******/ });
-//# sourceMappingURL=extension-worker.js.map
